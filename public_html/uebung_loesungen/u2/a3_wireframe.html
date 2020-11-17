@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: [left] 50% [right] 50%;
+            grid-template-rows: auto auto auto auto auto auto auto auto;
+            column-gap: 20px;
+            row-gap: 15px;
+            background-color: #f8f8f9;
+            font-family: 'Roboto', sans-serif;
+            border-radius: 10px;
+            align-items: start;
+            padding: 1em 2em;
+            justify-content: center;
+            width: 700px;
+        }
+
+        .center {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left {
+            justify-self: end;
+            text-align: right;
+        }
+        .right {
+            justify-self: start;
+
+        }
+        .heading {
+            text-align: center;
+        }
+        .explanation {
+            grid-column: 1 / span 2;
+            grid-row: 1;
+            text-align: center;
+            margin: 0.5em;
+        }
+        body {
+            background-color: #b2d6d1;
+            font-family: 'Roboto', sans-serif;
+        }
+        p {
+            margin: 0em;
+        }
+        input[type=text], input[type=number] {
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+    <h1 class="heading"> Survey Form </h1>
+</div>
+<div class="center">
+    <div class="container">
+        <p class="explanation"> Let us know how we can improve freeCodeCamp </p>
+        <div class="left"><p>* Name</p></div>
+        <div class="right"><input type="text" placeholder="Enter your name"></div>
+
+        <div class="left"><p>* Email</p></div>
+        <div class="right"><input type="text" placeholder="Enter your Email"></div>
+
+        <div class="left"><p>* Age</p></div>
+        <div class="right"><input type="number" id="quantity" min="0" max="100" step="1" placeholder="Age"> </div>
+
+        <div class="left"><p>Which option best describes your current role?</p></div>
+        <div class="right">
+            <select>
+                <option>Student</option>
+                <option>Something Else</option>
+            </select>
+        </div>
+
+        <div class="left"><p>* How likely is that you would recommend freeCodeCamp to a friend?</p></div>
+        <div class="right">
+            <input type="radio" name="recommend"> Definitely <br>
+            <input type="radio" name="recommend"> Maybe <br>
+            <input type="radio" name="recommend"> Not sure
+        </div>
+
+        <div class="left"><p>What do you like most in FCC</p></div>
+        <div class="right">
+            <select>
+                <option disabled selected> Select an option</option>
+                <option>I do this</option>
+                <option>Or I do that?</option>
+            </select>
+        </div>
+
+        <div class="left"><p>Things that should be improved in the future (Check all that apply):</p></div>
+        <div class="right">
+            <input type="checkbox"> Front-end Projects <br>
+            <input type="checkbox"> Back-end Projects <br>
+            <input type="checkbox"> Data Visualization
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto 1fr auto;
+            width: 98vw;
+            height: 98vh;
+        }
+
+        .menu {
+            grid-area: 1 / 1 / span 1 / span 2;
+            background: #363636;
+        }
+
+        .heading {
+            grid-area: 2 / 1 / span 1 / span 2;
+        }
+
+        .book {
+            grid-area: 3 / 1 / span 1 / span 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text {
+            grid-area: 3 / 2 / span 1 / span 1;
+            font-size: x-large;
+            margin: 18px;
+        }
+
+        .footer {
+            grid-area: 4 / 1 / span 1/ span 2;
+            background: #011826;
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #ebeae6;
+        }
+
+        .book_img {
+            display: flex;
+            border-radius: 25px;
+            margin: 0.5em 0.5em;
+            border: 1px solid black;
+            height: 60vh;
+        }
+
+        /* mobile phones */
+        @media screen and (max-width: 780px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+            .menu { grid-area: 1 / 1 / span 1 / span 1; }
+            .heading { grid-area: 2 / 1 / span 1 / span 1; }
+            .book { grid-area: 3 / 1 / span 1 / span 1; }
+            .text { grid-area: 4 / 1 / span 1 / span 1; }
+            .footer { grid-area: 5 / 1 / span 1/ span 1; }
+            .book_img {
+                height: 40vh;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="layout">
+    <div class="menu">
+        <p style="color: white"> menu 1 | menu 2 | menu 3 | menu 4</p>
+    </div>
+
+    <div class="heading">
+        <h1>You dont know JavaScript</h1>
+    </div>
+
+    <div class="book">
+        <img class="book_img" src="https://kaul.inf.h-brs.de/we/assets/img/landing-img.png">
+    </div>
+
+    <div class="text">
+        <p> Don't just drift through JavaScript.</p>
+        <p> Understand how JavaScript works</p>
+        <p> Start your journey through the bumpy side of Javascript</p>
+    </div>
+
+    <div class="footer">
+        <br>
+        <p style="color: white"> The first ebook in the book series is absolutely free.</p>
+        <p style="color: white"> [Fancy Button] </p>
+    </div>
+
+</div>
+
+</body>
+</html>

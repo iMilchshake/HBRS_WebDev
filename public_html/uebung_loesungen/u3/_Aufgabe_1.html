@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body {
+            display: grid;
+            height: 100vh;
+            grid-template-columns: auto 1fr auto;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+            "header header header"
+            "left main right"
+            "footer footer footer";
+        }
+
+        .header {
+            grid-area: header;
+           background: #fd2501;
+           padding: 2rem;
+           grid-column: 1 / 4;
+       }
+
+        .left-sidebar {
+            grid-area: left;
+            background: #1fd014;
+            grid-column: 1 / 2;
+        }
+
+        .main {
+            grid-area: main;
+            background: #5082ff;
+            grid-column: 2 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .right-sidebar {
+            grid-area: right;
+            background: #b01d9a;
+            grid-column: 3 / 4;
+        }
+
+        .footer {
+            grid-area: footer;
+            background: #343434;
+            padding: 2rem;
+            text-align: center;
+            grid-column: 1 / 4;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+        }
+
+        .left-sidebar,
+        .right-sidebar {
+            padding: 1rem;
+        }
+
+        @media(max-width: 50em){
+            body {
+                display: grid;
+                height: 100vh;
+                grid-template-columns: auto 1fr 1fr;
+                grid-template-rows: auto 1fr 1fr;
+                grid-template-areas:
+            "header header header"
+            "main right left"
+            "footer footer footer";
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="header"><h1>Header</h1></div>
+<div class="left-sidebar"><p>Left</p></div>
+<div class="main"><p>This is some nice content</p></div>
+<div class="right-sidebar"><p>Right</p></div>
+<div class="footer"><p>Footer</p></div>
+
+</body>
+</html>
