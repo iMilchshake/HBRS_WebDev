@@ -1,39 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Homepage tschn22s</title>
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Tobias Schneider</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0 0;
+            font-family: 'Roboto', sans-serif;
+            background: #333333;
+        }
 
-	<body>
-		<h1> Homepage: Tobias Schneider </h1>
+        p {
+            margin: 0 0;
+        }
 
-		<p> Work In Progress! </p>
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: repeat(auto-fit, auto);
+            column-gap: 10px;
+            row-gap: 10px;
+            background: #333333;
+        }
 
+        .header {
+            background: #ffa630;
+            grid-area: 1 / 1 / span 1 / span 3;
+            text-align: center;
+        }
 
-		<br><br>
+        .content {
+            background: #dedede;
+            grid-area: 2 / 2 / span 1 / span 2;
+            border-radius: 5px;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }
 
-		<h2> Lösungen </h2>
+        .left {
+            background: #DEDEDE;
+            grid-area: 2 / 1 / span 1 / span 1;
+            border-radius: 5px;
+            margin-left: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }
 
-		<ul>
-			<li> Übung 1
-			<ul>
-				<li><a href="./uebung_loesungen/u1/a4_wireframe.html">Aufgabe 4 - Wireframe</a></li>
-			</ul>
-			
-			<li> Übung 2
-			<ul>
-				<li><a href="./uebung_loesungen/u2/a2_1.html">Aufgabe 2 - Teil 1</a></li>
-				<li><a href="./uebung_loesungen/u2/a2_2.html">Aufgabe 2 - Teil 2</a></li>
-				<li><a href="./uebung_loesungen/u2/a3_wireframe.html">Aufgabe 3 - Wireframe</a></li>
-			</ul>
-			
-			<li> Übung 3
-			<ul>
-				<li><a href="./uebung_loesungen/u3/a1.html">Aufgabe 1</a></li>
-				<li><a href="./uebung_loesungen/u3/a2.html">Aufgabe 2</a></li>
-				<li><a href="./uebung_loesungen/u3/a3.html">Aufgabe 3</a></li>
-			</ul>
-		</ul>
-	</body>
+        @media screen and (max-width: 1000px) {
+            .layout {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(auto-fit, auto);
+            }
+            .header { grid-area: 1 / 1 / span 1 / span 1}
+            .content { grid-area: 2 / 1 / span 1 / span 1; margin-left: 10px}
+            .left { grid-area: 3 / 1 / span 1 / span 1; margin-right: 10px}
+        }
+
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <div class="header">
+            <h1> Tobias Schneider </h1>
+        </div>
+
+        <div class="bar">
+
+        </div>
+
+        <div class="left">
+            <p><b>Some Random Content: </b></p>
+            <br>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit.
+            </p>
+        </div>
+
+        <div class="content">
+            <p><b>Lösungen der Übungen: </b></p>
+            <br>
+            <ul>
+                <li> Übung 1
+                    <ul>
+                        <li><a href="./uebung_loesungen/u1/a4_wireframe.html">Aufgabe 4 - Wireframe</a></li>
+                    </ul>
+
+                <li> Übung 2
+                    <ul>
+                        <li><a href="./uebung_loesungen/u2/a2_1.html">Aufgabe 2 - Teil 1</a></li>
+                        <li><a href="./uebung_loesungen/u2/a2_2.html">Aufgabe 2 - Teil 2</a></li>
+                        <li><a href="./uebung_loesungen/u2/a3_wireframe.html">Aufgabe 3 - Wireframe</a></li>
+                    </ul>
+
+                <li> Übung 3
+                    <ul>
+                        <li><p href="./uebung_loesungen/u3/a1.html">Aufgabe 1</p></li>
+                        <li><p href="./uebung_loesungen/u3/a2.html">Aufgabe 2</p></li>
+                        <li><p href="./uebung_loesungen/u3/a3.html">Aufgabe 3</p></li>
+                    </ul>
+            </ul>
+        </div>
+    </div>
+</body>
 </html>
