@@ -41,16 +41,27 @@
         return n;
     }
 
+    // define graph
+    let graph_def = [["A","C"],["A","B"],["A","D"],["C","D"],["D","E"],["E","F"],["B","G"]];
+    let node_names_processed = [];
+    let graph = [];
 
-    // define Graph
-    let F = new Node("F");
-    let G = new Node("G");
-    let E = new Node("E",[F]);
-    let D = new Node("D", [E]);
-    let B = new Node("B", [G]);
-    let C = new Node("C", [D]);
-    let A = new Node("A", [C, D, B]);
-    let graph = [A, B, C, D, E, F, G];
+    // generate graph
+    graph_def.forEach(edge => {
+       edge.forEach(node_name => {
+           if(!node_names_processed.includes(node_name)) {
+               graph.push(new Node(node_name));
+               node_names_processed.push(node_name);
+           }
+       })
+    })
+
+    // add edges to nodes
+    graph_def.forEach(edge => {
+        let start_node = graph.find(n => n.name === edge[0]);
+        let end_node = graph.find(n => n.name === edge[1]);
+        start_node.addEdge(end_node);
+    })
 
     // declare needed structures
     let top_sort_reversed = [];
@@ -64,16 +75,18 @@
         }
     })
 
-    // flip top_sort_reversed
+    // flip top_sort_reversed into top_sort
     while(top_sort_reversed.length>0) {
         top_sort.push(top_sort_reversed.pop());
     }
 
-    // debug/test
+    // debug/test result
+    console.log("debug:")
     console.log("graph: ", graph);
-    console.log("found_nodes: ", found_nodes);
     console.log("top_sort: ", top_sort);
-
+    console.log("");
+    console.log("result:")
+    console.log("top_sort (as list): ", top_sort.map(x => x.name));
 </script>
 <body>
 
