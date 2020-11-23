@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 4 - Aufgabe 4</title>
+</head>
+<script>
+
+    function topSort(node) {
+        // add edge to found nodes
+        found_nodes.push(node);
+
+        // process each new adjacent node first
+        node.edges.forEach(n => {
+            if(!found_nodes.includes(n)) {
+                topSort(n);
+            }
+        })
+
+        // all adjacent nodes have been processed
+        // add node to top_sort_reversed
+        top_sort_reversed.push(node);
+    }
+
+    // constructor for Node Object
+    function Node(name, nodes) {
+        let n = {
+            name: name,
+            edges: []
+        };
+
+        n.addEdge = function(node) {
+            n.edges.push(node);
+        }
+
+        if(nodes) {
+            nodes.forEach(node => {
+                n.addEdge(node);
+            })
+        }
+        return n;
+    }
+
+
+    // define Graph
+    let F = new Node("F");
+    let G = new Node("G");
+    let E = new Node("E",[F]);
+    let D = new Node("D", [E]);
+    let B = new Node("B", [G]);
+    let C = new Node("C", [D]);
+    let A = new Node("A", [C, D, B]);
+    let graph = [A, B, C, D, E, F, G];
+
+    // declare needed structures
+    let top_sort_reversed = [];
+    let top_sort = [];
+    let found_nodes = [];
+
+    // generate top_sort_reversed
+    graph.forEach(n => {
+        if(!found_nodes.includes(n)) {
+            topSort(n);
+        }
+    })
+
+    // flip top_sort_reversed
+    while(top_sort_reversed.length>0) {
+        top_sort.push(top_sort_reversed.pop());
+    }
+
+    // debug/test
+    console.log("graph: ", graph);
+    console.log("found_nodes: ", found_nodes);
+    console.log("top_sort: ", top_sort);
+
+</script>
+<body>
+
+</body>
+</html>
