@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 4 - Aufgbae 1</title>
+</head>
+<script>
+    const value = 3;
+    const value2 = 4;
+
+    // 1.
+    function identity(x) {
+        return x;
+    }
+    console.log("1: ", identity(value))
+
+    // 2.
+    function identity_function(x) {
+        return function() {
+            return x;
+        }
+    }
+    f = identity_function(value);
+    console.log("2: ", f());
+
+    // 3.
+    function add(x, y) {
+        return x+y;
+    }
+    function mul(x, y) {
+        return x*y;
+    }
+    console.log("3: ", add(value, value2), mul(value, value2));
+
+    // 4.
+    function addf(x) {
+        return function(y) {
+            return x + y;
+        }
+    }
+
+    f2 = addf(value);
+    console.log("4: ", typeof f2, f2(value2))
+
+    // 5.
+    function applyf(func) {
+        return function(x) {
+            return function (y) {
+                return func(x, y);
+            }
+        }
+    }
+    console.log("5: ", applyf(mul)(5)(6));
+
+</script>
+<body>
+
+</body>
+</html>
