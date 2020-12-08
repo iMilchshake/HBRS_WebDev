@@ -21,4 +21,6 @@ let mostCommonWords = wordsSorted.splice(0, 3).map(x => ({
     word: x,
     count: wordCounts[x]
 }))
+
+// print
 console.log(mostCommonWords);

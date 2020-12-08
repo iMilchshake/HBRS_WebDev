@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Tobias Schneider</title>
+
+    <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <!-- social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
@@ -29,6 +35,23 @@
             background: #ffa630;
             grid-area: 1 / 1 / span 1 / span 3;
             text-align: center;
+            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .header > h1{
+            font-size: 45px;
+            margin: 0px;
+        }
+
+        .socialmedia {
+            display: flex;
+            flex-direction: row;
+            justify-self: end;
+            gap: 10px;
+            padding: 10px;
+            flex-wrap: wrap;
         }
 
         .content {
@@ -49,6 +72,50 @@
             border: 1px solid black;
         }
 
+        /* Style all font awesome icons */
+        .fa {
+            padding: 20px;
+            font-size: 20px;
+            width: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        /* Add a hover effect if you want */
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+        /* Set a specific color for each brand */
+
+        /* Facebook */
+        .fa-facebook {
+            background: #000000;
+            color: white;
+            border-radius: 50%;
+        }
+
+        /* Twitter */
+        .fa-twitter {
+            background: #000000;
+            color: white;
+            border-radius: 50%;
+        }
+
+        /* Github */
+        .fa-github {
+            background: #000000;
+            color: white;
+            border-radius: 50%;
+        }
+
+        /* Instagram */
+        .fa-instagram {
+            background: #000000;
+            color: white;
+            border-radius: 50%;
+        }
+
         @media screen and (max-width: 1000px) {
             .layout {
                 grid-template-columns: 1fr;
@@ -64,7 +131,14 @@
 <body>
     <div class="layout">
         <div class="header">
+            <h2> Page Links </h2    >
             <h1> Tobias Schneider </h1>
+            <div class="socialmedia">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-github"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>
         </div>
 
         <div class="bar">
