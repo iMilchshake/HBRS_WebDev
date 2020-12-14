@@ -39,23 +39,23 @@
         </tr>
         <tr>
             <td>textContent</td>
-            <td id="td_textContent"></td>
+            <td id="td_textContent">?</td>
         </tr>
         <tr>
             <td>innerText</td>
-            <td id="td_innerText"></td>
+            <td id="td_innerText">?</td>
         </tr>
         <tr>
             <td>innerHTML</td>
-            <td id="td_innerHTML"></td>
+            <td id="td_innerHTML">?</td>
         </tr>
         <tr>
             <td>outerHTML</td>
-            <td id="td_outerHTML"></td>
+            <td id="td_outerHTML">?</td>
         </tr>
     </table>
 
-    <p id="id_n"> with n = ? </p>
+    <p id="id_n"> benchmark is running... </p>
 </div>
 
 </body>
@@ -103,5 +103,5 @@
     document.getElementById('td_outerHTML').innerText = "" + t_outerHTML.toFixed(2) + "ms";
 
     // display n
-    document.getElementById("id_n").innerText = "with n=" + n + " accesses";
+    document.getElementById("id_n").innerText = "finished benchmark with n=" + n + " individual accesses";
 </script>
