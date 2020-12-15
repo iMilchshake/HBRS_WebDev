@@ -21,7 +21,13 @@ function changeTeam() {
 // visually updates the Buttons
 function updateHTMLBoard() {
     for(let i = 0; i < 9; i++) {
-        buttons[i].innerHTML = board.board[i];
+        const team = board.board[i];
+        buttons[i].innerHTML = team;
+        buttons[i].className = "tictactoe_button";
+        if(team == humanTeam)
+            buttons[i].classList.add('tictactoe_button_teamHuman')
+        else if(team == aiTeam)
+            buttons[i].classList.add('tictactoe_button_teamAI')
     }
 }
 
