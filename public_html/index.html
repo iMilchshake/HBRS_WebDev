@@ -3,180 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Tobias Schneider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- font -->
+    <!-- fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
     <!-- social media icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/022faa5e65.js" crossorigin="anonymous"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            margin: 0 0;
-            font-family: 'Roboto', sans-serif;
-            background: #333333;
-        }
-
-        p {
-            margin: 0 0;
-        }
-
-        .layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: repeat(auto-fit, auto);
-            column-gap: 10px;
-            row-gap: 10px;
-            background: #333333;
-        }
-
-        .header {
-            background: #ffa630;
-            grid-area: 1 / 1 / span 1 / span 3;
-            text-align: center;
-            align-items: center;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-
-        .header > h1{
-            font-size: 45px;
-            margin: 0px;
-        }
-
-        .socialmedia {
-            display: flex;
-            flex-direction: row;
-            justify-self: end;
-            gap: 10px;
-            padding: 10px;
-            flex-wrap: wrap;
-        }
-
-        .content {
-            background: #dedede;
-            grid-area: 2 / 2 / span 1 / span 2;
-            border-radius: 5px;
-            margin-right: 10px;
-            padding: 10px;
-            border: 1px solid black;
-        }
-
-        .left {
-            background: #DEDEDE;
-            grid-area: 2 / 1 / span 1 / span 1;
-            border-radius: 5px;
-            margin-left: 10px;
-            padding: 10px;
-            border: 1px solid black;
-        }
-
-        /* Style all font awesome icons */
-        .fa {
-            padding: 20px;
-            font-size: 20px;
-            width: 20px;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        /* Add a hover effect if you want */
-        .fa:hover {
-            opacity: 0.7;
-        }
-
-        /* Set a specific color for each brand */
-
-        /* Facebook */
-        .fa-facebook {
-            background: #000000;
-            color: white;
-            border-radius: 50%;
-        }
-
-        /* Twitter */
-        .fa-twitter {
-            background: #000000;
-            color: white;
-            border-radius: 50%;
-        }
-
-        /* Github */
-        .fa-github {
-            background: #000000;
-            color: white;
-            border-radius: 50%;
-        }
-
-        /* Instagram */
-        .fa-instagram {
-            background: #000000;
-            color: white;
-            border-radius: 50%;
-        }
-
-        @media screen and (max-width: 1000px) {
-            .layout {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(auto-fit, auto);
-            }
-            .header { grid-area: 1 / 1 / span 1 / span 1}
-            .content { grid-area: 2 / 1 / span 1 / span 1; margin-left: 10px}
-            .left { grid-area: 3 / 1 / span 1 / span 1; margin-right: 10px}
-        }
-
-    </style>
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fa_icons.css">
 </head>
+
 <body>
-    <div class="layout">
-        <div class="header">
-            <h2> Page Links </h2    >
-            <h1> Tobias Schneider </h1>
-            <div class="socialmedia">
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-twitter"></a>
-                <a href="#" class="fa fa-github"></a>
-                <a href="#" class="fa fa-instagram"></a>
-            </div>
-        </div>
-
-        <div class="bar">
-
-        </div>
-
-        <div class="left">
-            <p><b>Some Random Content: </b></p>
-            <br>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit.
-            </p>
-        </div>
-
-        <div class="content">
-            <p><b>Lösungen der Übungen: </b></p>
-            <br>
-            <ul>
-                <li> Übung 1
-                    <ul>
-                        <li><a href="./uebung_loesungen/u1/a4_wireframe.html">Aufgabe 4 - Wireframe</a></li>
-                    </ul>
-
-                <li> Übung 2
-                    <ul>
-                        <li><a href="./uebung_loesungen/u2/a2_1.html">Aufgabe 2 - Teil 1</a></li>
-                        <li><a href="./uebung_loesungen/u2/a2_2.html">Aufgabe 2 - Teil 2</a></li>
-                        <li><a href="./uebung_loesungen/u2/a3_wireframe.html">Aufgabe 3 - Wireframe</a></li>
-                    </ul>
-
-                <li> Übung 3
-                    <ul>
-                        <li><a href="./uebung_loesungen/u3/a1.html">Aufgabe 1</a></li>
-                        <li><a href="./uebung_loesungen/u3/a2.html">Aufgabe 2</a></li>
-                        <li><a href="./uebung_loesungen/u3/a3.html">Aufgabe 3</a></li>
-                    </ul>
-            </ul>
+<div class="layout">
+    <div class="heading">
+        <h1> Tobias Schneider </h1>
+        <div class="socialmedia">
+            <a href="https://github.com/iMilchshake" class="fa fa-github"></a>
+            <a href="mailto:Tobias20.3@hotmail.de" class="fas fa-envelope"></a>
         </div>
     </div>
+    <div class="menu">
+        <a href="http://www.google.de"> <button type="button" class="menu_button menu_button_current"> Web Engineering </button></a>
+        <a href="http://www.google.de"> <button type="button" class="menu_button"> Private Projekte </button></a>
+        <a href="http://www.google.de"> <button type="button" class="menu_button"> Tic Tac Toe </button></a>
+    </div>
+    <div class="side">
+        <ul>
+            <li>Übung 1</li>
+            <li>Übung 2</li>
+            <li>Übung 3</li>
+            <li>Übung 4</li>
+            <li>Übung 5</li>
+            <li>Übung 6</li>
+            <li>Übung 7</li>
+        </ul>
+    </div>
+    <div class="content">
+        <p><b>Some Random Content: </b></p>
+        <br>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum sapien sit amet metus faucibus, sit amet gravida est semper. Proin vel ante nisi. Nullam purus orci, euismod eu accumsan et, ultrices sed sapien. Cras efficitur sapien ac congue scelerisque. Curabitur a sodales arcu, nec accumsan justo. Fusce metus felis, molestie a luctus viverra, sagittis eu nisl. Fusce convallis ut lectus vel pellentesque. Nulla ligula sapien, suscipit non cursus a, tempus non magna. Pellentesque efficitur velit erat, vitae feugiat mi vestibulum at. Aliquam id ligula dolor. Phasellus non ipsum fermentum, venenatis dolor non, finibus justo. Sed mauris felis, posuere et tellus eu, convallis euismod ex. Etiam non massa sed nibh rutrum mattis. In id auctor velit.
+        </p>
+    </div>
+</div>
 </body>
 </html>
