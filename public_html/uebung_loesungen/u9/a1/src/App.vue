@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <eingabe/>
+    <eingabe/>
   </div>
 </template>
 
