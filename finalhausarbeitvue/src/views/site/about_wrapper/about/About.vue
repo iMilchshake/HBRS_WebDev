@@ -1,14 +1,15 @@
 <template>
-  <h2> Home </h2>
+  <h2> About </h2>
   <hr>
   <LoremIpsumContent/>
 </template>
 
 <script>
-import LoremIpsumContent from "../components/LoremIpsumContent";
+
+import LoremIpsumContent from "../../../../components/LoremIpsumContent";
 
 export default {
-  name: "Home",
+  name: "About",
   components: {LoremIpsumContent}
 }
 </script>
