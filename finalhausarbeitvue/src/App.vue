@@ -44,6 +44,8 @@ body {
 .nav {
   padding: 10px 15px;
   background: lightgray;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav a {

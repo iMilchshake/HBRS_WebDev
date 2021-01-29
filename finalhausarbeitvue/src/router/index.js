@@ -5,6 +5,7 @@ import Main from "../views/site/Site";
 import Welcome from "../views/welcome/Welcome";
 import About_wrapper from "../views/site/about_wrapper/About_wrapper";
 import About2 from "../views/site/about_wrapper/about2/About2";
+import Navigator_wrapper from "../views/site/navigator_wrapper/Navigator_wrapper";
 
 const routes = [
     {
@@ -32,6 +33,12 @@ const routes = [
                         name: 'About2',
                         component: About2
                     }]
+            },
+            {
+                path: '/site/navigator/',
+                name: 'Navigator',
+                component: Navigator_wrapper,
+                children: []
             }]
     },
     {

@@ -10,9 +10,8 @@
     <div class="menu">
       <button class="menu_button" @click="$router.push('/site/home')">Home</button>
       <button class="menu_button" @click="$router.push('/site/about/about')">About</button>
-
+      <button class="menu_button" @click="$router.push('/site/navigator/')">Navigator</button>
     </div>
-
     <div class="content_wrapper">
       <router-view/>
     </div>
