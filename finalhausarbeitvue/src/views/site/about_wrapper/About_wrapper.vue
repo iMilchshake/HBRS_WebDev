@@ -2,7 +2,6 @@
   <div class="about_wrapper">
     <div class="nav">
       <router-link to="/site/about/about"> About 1 </router-link>
-      <br>
       <router-link to="/site/about/about2"> About 2 </router-link>
     </div>
     <div class="content">

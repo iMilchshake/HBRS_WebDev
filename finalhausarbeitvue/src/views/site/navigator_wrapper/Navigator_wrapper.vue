@@ -1,19 +1,26 @@
 <template>
   <div class="about_wrapper">
     <div class="nav_navigator">
-      <div class="topic_group" v-for="topic in getData" v-bind:key="topic">
-        <router-link to="" @click="topicChange(topic.head)"> {{ topic.head }}</router-link>
-        <div class="subtopic_group" v-if="topic.head == getTopic">
-          <router-link to="" v-for="subtopic in topic.children" v-bind:key="subtopic"> {{ subtopic }}</router-link>
+      <div class="topic_group" v-for="exercise in getData" v-bind:key="exercise">
+        <router-link to="" @click="topicChange(exercise.exercise)"> {{ exercise.exercise }}</router-link>
+        <div class="subtopic_group" v-if="exercise.exercise == getTopic">
+          <router-link to="" @click="subTopicChange(task.task)" v-for="task in exercise.tasks" v-bind:key="task"> {{ task.task }}</router-link>
         </div>
       </div>
     </div>
-    <div class="content">
-      <h2> current topic is: {{getTopic}}</h2>
+    <div class="content" v-if="getTopic !== ''">
+      <h1> {{ getTopic }} - {{ getHeading }}</h1>
+      <hr>
+      <div class="QA" v-if="getSubTopic !== ''">
+        <h2> {{getTaskData.task}} - {{getTaskData.txt}} </h2>
+        <br>
+        <div class="QA_section" v-for="subtask in getTaskData.subtasks" v-bind:key="subtask">
+          <h3> {{ subtask.q }} </h3>
+          <p> {{subtask.a}}</p>
+        </div>
+      </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -24,6 +31,7 @@ export default {
     topicChange: function (topic) {
       console.log("change topic to:", topic);
       this.$store.commit('changeTopic', topic)
+      this.$store.commit('changeSubTopic', "")
     },
     subTopicChange(subtopic) {
       console.log("change subtopic to:", subtopic);
@@ -35,39 +43,62 @@ export default {
       return this.$store.state.data;
     },
     getTopic() {
-      return this.$store.state.topic;
+     return this.$store.state.topic;
+    },
+    getSubTopic() {
+      return this.$store.state.subtopic;
+    },
+    getExerciseData() {
+      return this.getData.find(e => e.exercise === this.getTopic);
+    },
+    getTaskData() {
+      return this.getExerciseData.tasks.find(t => t.task === this.getSubTopic);
+    },
+    getHeading() {
+      const exercise = this.getExerciseData;
+      if (exercise != undefined) {
+        return exercise['heading'];
+      } else {
+        return "";
+      }
     }
   },
   created() {
-    this.topicChange("");
-    this.subTopicChange("");
+    //this.topicChange("");
+    //this.subTopicChange("");
   }
 }
 </script>
 
 <style scoped>
+
+.QA_section p {
+  white-space: pre-wrap;
+}
+
 .nav_navigator {
-  padding: 10px 15px;
-  background: lightgray;
+  padding-top: 1em;
   display: flex;
   flex-direction: column;
   background: gray;
+  width: 105px;
 }
 
 .subtopic_group {
+  padding-left: 1em;
   display: flex;
   flex-direction: column;
-  background: white;
-}
-
-.subtopic_group a {
-  color: black;
+  background: lightgrey;
 }
 
 .topic_group {
   display: flex;
   flex-direction: column;
-  background: darkgray;
+  background: gray;
+}
+
+a {
+  color: black;
 }
 
 .about_wrapper {
