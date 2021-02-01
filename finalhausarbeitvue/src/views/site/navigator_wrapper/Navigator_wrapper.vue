@@ -1,10 +1,12 @@
 <template>
-  <div class="about_wrapper">
+  <div class="navigation_wrapper">
     <div class="nav_navigator">
       <div class="topic_group" v-for="exercise in getData" v-bind:key="exercise">
         <router-link to="" @click="topicChange(exercise.exercise)"> {{ exercise.exercise }}</router-link>
         <div class="subtopic_group" v-if="exercise.exercise == getTopic">
-          <router-link to="" @click="subTopicChange(task.task)" v-for="task in exercise.tasks" v-bind:key="task"> {{ task.task }}</router-link>
+          <router-link to="" @click="subTopicChange(task.task)" v-for="task in exercise.tasks" v-bind:key="task">
+            {{ task.task }}
+          </router-link>
         </div>
       </div>
     </div>
@@ -12,11 +14,19 @@
       <h1> {{ getTopic }} - {{ getHeading }}</h1>
       <hr>
       <div class="QA" v-if="getSubTopic !== ''">
-        <h2> {{getTaskData.task}} - {{getTaskData.txt}} </h2>
+        <h2> {{ getTaskData.task }} - {{ getTaskData.txt }} </h2>
         <br>
         <div class="QA_section" v-for="subtask in getTaskData.subtasks" v-bind:key="subtask">
-          <h3> {{ subtask.q }} </h3>
-          <p> {{subtask.a}}</p>
+          <div v-if="subtask.override === undefined">
+            <h3> {{ subtask.q }} </h3>
+            <p> {{ subtask.a }}</p>
+          </div>
+          <div v-else-if="subtask.override === 'html_wireframe'">
+            <h3> {{ subtask.q }} </h3>
+            <img :src="subtask.wireframe">
+            <br>
+            <router-link :to=subtask.path> Link to Solution! </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -28,6 +38,9 @@
 export default {
   name: "Navigator_wrapper",
   methods: {
+    async getWireframeSrc() {
+      fetch("src/assets/test.txt").then(x => x.text()).then(x => console.log(x))
+    },
     topicChange: function (topic) {
       console.log("change topic to:", topic);
       this.$store.commit('changeTopic', topic)
@@ -43,7 +56,7 @@ export default {
       return this.$store.state.data;
     },
     getTopic() {
-     return this.$store.state.topic;
+      return this.$store.state.topic;
     },
     getSubTopic() {
       return this.$store.state.subtopic;
@@ -66,6 +79,7 @@ export default {
   created() {
     //this.topicChange("");
     //this.subTopicChange("");
+    this.getWireframeSrc();
   }
 }
 </script>
@@ -101,7 +115,12 @@ a {
   color: black;
 }
 
-.about_wrapper {
+img {
+  max-width: 500px;
+  width: 100%;
+}
+
+.navigation_wrapper {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr;

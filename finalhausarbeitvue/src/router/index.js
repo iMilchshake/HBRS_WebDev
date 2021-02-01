@@ -6,6 +6,8 @@ import Welcome from "../views/welcome/Welcome";
 import About_wrapper from "../views/site/about_wrapper/About_wrapper";
 import About2 from "../views/site/about_wrapper/about2/About2";
 import Navigator_wrapper from "../views/site/navigator_wrapper/Navigator_wrapper";
+import Solution_wrapper from "../views/solutions_wrapper/Solution_wrapper";
+import u1_a4 from "../views/solutions_wrapper/solutions/u1_a4";
 
 const routes = [
     {
@@ -45,6 +47,18 @@ const routes = [
         path: '/',
         name: 'Welcome',
         component: Welcome
+    },
+    {
+        path: '/solutions_wrapper/',
+        name: 'Solutions',
+        component: Solution_wrapper,
+        children: [
+            {
+                path: '/solutions/u1_a4',
+                name: 'u1_a4',
+                component: u1_a4
+            }
+        ]
     }
 ]
 

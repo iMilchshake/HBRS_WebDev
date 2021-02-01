@@ -118,8 +118,11 @@ export default createStore({
                         txt: "HTML Wireframe",
                         subtasks: [
                             {
-                                q: "haha funny question",
-                                a: "funny answer XD"
+                                override: 'html_wireframe',
+                                wireframe: 'https://kaul.inf.h-brs.de/we/assets/img/wireframe01.jpg',
+                                q: "Mit welchem HTML-Code (ohne CSS, nur mit HTML-Tags) kann man diesen Wireframe exakt nachbilden?",
+                                src: 'src/assets/a4_wireframe.html',
+                                path: '/solutions/u1_a4'
                             }
                         ]
                     }
