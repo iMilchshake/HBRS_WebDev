@@ -38,9 +38,6 @@
 export default {
   name: "Navigator_wrapper",
   methods: {
-    async getWireframeSrc() {
-      fetch("src/assets/test.txt").then(x => x.text()).then(x => console.log(x))
-    },
     topicChange: function (topic) {
       console.log("change topic to:", topic);
       this.$store.commit('changeTopic', topic)
@@ -79,7 +76,6 @@ export default {
   created() {
     //this.topicChange("");
     //this.subTopicChange("");
-    this.getWireframeSrc();
   }
 }
 </script>

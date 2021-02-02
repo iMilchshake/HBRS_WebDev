@@ -5,10 +5,14 @@
 </template>
 
 <script>
+const jsonData = require("./assets/exercises.json")
 
 export default {
   name: 'App',
-  components: {}
+  components: {},
+  created() {
+    this.$store.commit("readData", jsonData);
+  }
 }
 </script>
 
