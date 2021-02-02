@@ -145,15 +145,41 @@
   },
   {
     "exercise": "Übung 3",
-    "heading": "",
+    "heading": "CSS 2. Teil - Responsive Web Design",
     "tasks": [
       {
-        "task": "",
-        "txt": "",
+        "task": "Aufgabe 1",
+        "txt": "Responsiv mit Flexbox Desktop-First",
         "subtasks": [
           {
-            "q": "",
-            "a": ""
+            "override": "html_wireframe",
+            "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/holy-grail1.png",
+            "q": "Implementieren Sie dann ausschließlich mit HTML und CSS Flexbox folgendes responsive Webdesign nach der Desktop-First-Strategie!",
+            "path": "/solutions/u3/a1.html"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 2",
+        "txt": "Responsiv mit Grid Mobile-First",
+        "subtasks": [
+          {
+            "override": "html_wireframe",
+            "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/holy-grail1.png",
+            "q": "Implementieren Sie dann das gleiche responsive Webdesign wie in Aufgabe 3.1 allerdings mit Grid und der Mobile-First-Strategie! Vermeiden Sie diesmal außerdem das Erscheinen von Scrollbars.",
+            "path": "/solutions/u3/a2.html"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 3",
+        "txt": "Responsiv mit Grid",
+        "subtasks": [
+          {
+            "override": "html_wireframe",
+            "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/holy-grail1.png",
+            "q": "Implementieren Sie folgende Landing Page responsiv mit Grid Layout. Vermeiden Sie außerdem das Erscheinen von Scrollbars so weit wie möglich.",
+            "path": "/solutions/u3/a3.html"
           }
         ]
       }

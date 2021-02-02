@@ -3,7 +3,7 @@
     <div class="nav_navigator">
       <div class="topic_group" v-for="exercise in getData" v-bind:key="exercise">
         <router-link to="" @click="topicChange(exercise.exercise)"> {{ exercise.exercise }}</router-link>
-        <div class="subtopic_group" v-if="exercise.exercise == getTopic">
+        <div class="subtopic_group" v-if="exercise.exercise === getTopic">
           <router-link to="" @click="subTopicChange(task.task)" v-for="task in exercise.tasks" v-bind:key="task">
             {{ task.task }}
           </router-link>
@@ -23,7 +23,7 @@
           </div>
           <div v-else-if="subtask.override === 'html_wireframe'">
             <h3> {{ subtask.q }} </h3>
-            <img :src="subtask.wireframe">
+            <img v-if="subtask.wireframe !== undefined" :src="subtask.wireframe">
             <br>
             <a v-if="subtask.video_link !== undefined" target="_blank" rel="noopener noreferrer" :href=subtask.video_link> Link to Video! </a>
             <br>
@@ -114,8 +114,8 @@ a {
 }
 
 img {
-  max-width: 500px;
-  width: 100%;
+  max-width: 600px;
+  max-height: 450px;
 }
 
 .navigation_wrapper {
