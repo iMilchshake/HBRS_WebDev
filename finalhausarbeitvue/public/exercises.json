@@ -85,8 +85,7 @@
             "override": "html_wireframe",
             "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/wireframe01.jpg",
             "q": "Mit welchem HTML-Code (ohne CSS, nur mit HTML-Tags) kann man diesen Wireframe exakt nachbilden?",
-            "src": "src/assets/a4_wireframe.html",
-            "path": "/solutions/u1_a4"
+            "path": "/solutions/u1/a4_wireframe.html"
           }
         ]
       }
@@ -94,22 +93,87 @@
   },
   {
     "exercise": "Übung 2",
-    "heading": "headhead",
-    "tasks": []
+    "heading": "CSS 1. Teil",
+    "tasks": [
+      {
+        "task": "Aufgabe 1",
+        "txt": "CSS Selektoren und CSS Farben",
+        "subtasks": [
+          {
+            "q": "Berechnen Sie die Spezifität folgender CSS-Selektoren:\n\n1) div div div:focus  .inner\n2) h1 + div.main\n3) div a:link[href*='h-brs']\n4) nav > a:hover::before\n5) ul#primary-nav  li.active",
+            "a": "1) 023\n2) 012\n3) 022\n4) 013\n5) 112"
+          },
+          {
+            "q": "Rechnen Sie folgende RGB-Werte in HSL-Werte um:\n\n1) #ffffff\n2) #000\n3) #ab0978\n4) rgb(127,255,33)\n5) rgba(255,127,33,0.8)",
+            "a": "1) hsl(0,0,100%)\n2) hsl(0,0,0%)\n3) hsl(319, 90, 35%)\n4) hsl(95,100,56.5%)\n5) hsl(25, 100, 56%)"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 2",
+        "txt": "CSS Positionierung",
+        "subtasks": [
+          {
+            "override": "html_wireframe",
+            "wireframe": "https://img.youtube.com/vi/PE3POxjDspo/0.jpg",
+            "video_link": "https://youtu.be/PE3POxjDspo",
+            "q": "Schauen Sie sich folgendes Video an und bauen Sie das dynamische Verhalten exakt nach (nur mit HTML und CSS, ohne JavaScript):",
+            "path": "/solutions/u2/a2_1.html"
+          },
+          {
+            "override": "html_wireframe",
+            "wireframe": "https://img.youtube.com/vi/HVmnv3k4__E/0.jpg",
+            "video_link": "https://youtu.be/HVmnv3k4__E",
+            "q": "Schauen Sie sich folgendes Video an und bauen Sie das dynamische Verhalten exakt nach (nur mit HTML und CSS, ohne JavaScript):",
+            "path": "/solutions/u2/a2_2.html"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 3",
+        "txt": "Wireframe with HTML and CSS",
+        "subtasks": [
+          {
+            "override": "html_wireframe",
+            "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/survey.png",
+            "q": "Mit welchem HTML- und CSS-Code kann man diesen Wireframe exakt nachbilden?",
+            "path": "/solutions/u2/a3_wireframe.html"
+          }
+        ]
+      }
+    ]
   },
   {
     "exercise": "Übung 3",
-    "heading": "headhead",
-    "tasks": []
+    "heading": "",
+    "tasks": [
+      {
+        "task": "",
+        "txt": "",
+        "subtasks": [
+          {
+            "q": "",
+            "a": ""
+          }
+        ]
+      }
+    ]
   },
   {
     "exercise": "Übung 4",
-    "heading": "headhead",
-    "tasks": []
-  },
-  {
-    "exercise": "Übung 5",
-    "heading": "headhead",
-    "tasks": []
+    "heading": "",
+    "tasks": [
+      {
+        "task": "",
+        "txt": "",
+        "subtasks": [
+          {
+            "q": "",
+            "a": ""
+          }
+        ]
+      }
+    ]
   }
 ]
+
