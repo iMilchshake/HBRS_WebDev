@@ -25,7 +25,9 @@
             <h3> {{ subtask.q }} </h3>
             <img :src="subtask.wireframe">
             <br>
-            <router-link :to=subtask.path> Link to Solution! </router-link>
+            <a v-if="subtask.video_link !== undefined" target="_blank" rel="noopener noreferrer" :href=subtask.video_link> Link to Video! </a>
+            <br>
+            <a target="_blank" rel="noopener noreferrer" :href="subtask.path"> Link to Solution! </a>
           </div>
         </div>
       </div>
@@ -82,7 +84,7 @@ export default {
 
 <style scoped>
 
-.QA_section p {
+.QA_section p, h3 {
   white-space: pre-wrap;
 }
 

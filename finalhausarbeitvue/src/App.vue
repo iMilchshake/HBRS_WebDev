@@ -5,13 +5,14 @@
 </template>
 
 <script>
-const jsonData = require("./assets/exercises.json")
-
+//const jsonData = require("./exercises.json")
 export default {
   name: 'App',
   components: {},
   created() {
-    this.$store.commit("readData", jsonData);
+    fetch("./exercises.json")
+        .then(x => x.json())
+        .then(x => this.$store.commit("readData", x));
   }
 }
 </script>
