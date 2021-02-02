@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 4 - Aufgabe 4</title>
+</head>
+<script>
+
+    function topSort(node) {
+        // add edge to found nodes
+        found_nodes.push(node);
+
+        // process each new adjacent node first
+        node.edges.forEach(n => {
+            if(!found_nodes.includes(n)) {
+                topSort(n);
+            }
+        })
+
+        // all adjacent nodes have been processed
+        // add node to top_sort_reversed
+        top_sort_reversed.push(node);
+    }
+
+    // constructor for Node Object
+    function Node(name, nodes) {
+        let n = {
+            name: name,
+            edges: []
+        };
+
+        n.addEdge = function(node) {
+            n.edges.push(node);
+        }
+
+        if(nodes) {
+            nodes.forEach(node => {
+                n.addEdge(node);
+            })
+        }
+        return n;
+    }
+
+    // define graph
+    let graph_def = [["A","C"],["A","B"],["A","D"],["C","D"],["D","E"],["E","F"],["B","G"]];
+    let node_names_processed = [];
+    let graph = [];
+
+    // generate graph
+    graph_def.forEach(edge => {
+       edge.forEach(node_name => {
+           if(!node_names_processed.includes(node_name)) {
+               graph.push(new Node(node_name));
+               node_names_processed.push(node_name);
+           }
+       })
+    })
+
+    // add edges to nodes
+    graph_def.forEach(edge => {
+        let start_node = graph.find(n => n.name === edge[0]);
+        let end_node = graph.find(n => n.name === edge[1]);
+        start_node.addEdge(end_node);
+    })
+
+    // declare needed structures
+    let top_sort_reversed = [];
+    let top_sort = [];
+    let found_nodes = [];
+
+    // generate top_sort_reversed
+    graph.forEach(n => {
+        if(!found_nodes.includes(n)) {
+            topSort(n);
+        }
+    })
+
+    // flip top_sort_reversed into top_sort
+    while(top_sort_reversed.length>0) {
+        top_sort.push(top_sort_reversed.pop());
+    }
+
+    // debug/test result
+    console.log("debug:")
+    console.log("graph: ", graph);
+    console.log("top_sort: ", top_sort);
+    console.log("");
+    console.log("result:")
+    console.log("top_sort (as list): ", top_sort.map(x => x.name));
+</script>
+<body>
+
+</body>
+</html>

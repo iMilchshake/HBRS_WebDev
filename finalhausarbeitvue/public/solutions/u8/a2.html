@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 7 - Aufgabe 1</title>
+</head>
+<body>
+    <h1> Concatenation using Promises! </h1>
+    <p class="text"></p>
+</body>
+</html>
+
+<script>
+    async function fetchAndSplit(str) {
+        // fetch
+        const text = await fetch(str);
+
+        // split
+        return (await text.text()).split("\r\n");
+    }
+
+    async function concat(arrays, i) {
+        arrays[0][i] += arrays[1][i];
+    }
+
+    async function main() {
+        // get HTML element
+        const output = document.getElementsByClassName("text")[0];
+
+        // fetch and split .txt files in parallel
+        const txt = await Promise.all([fetchAndSplit("A.txt"), fetchAndSplit("B.txt")]);
+
+        // concat text in parallel
+        const n = Math.min(txt[0].length, txt[1].length);
+        const range = [...Array(n).keys()];
+        const jobs = range.map(i => concat(txt, i))
+        await Promise.all(jobs);
+
+        // set HTML
+        output.innerText = txt[0].join("\r\n");
+
+        // debug
+        console.log(txt);
+    }
+
+    main();
+</script>

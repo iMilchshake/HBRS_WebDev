@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 7 - Aufgabe 1</title>
+    <style>
+        .dummy_class {
+            border: 1px solid black;
+            margin: 5px;
+            width: 350px;
+            padding: 5px;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="dummy_class" id="dummy_id">
+    <center>
+    <h1> This is a dummy page </h1>
+    <h2> like, dont expect any content</h2>
+    <p> just some text with empty promises</p>
+    <p> really empty page </p>
+    <p> just wait for the benchmark to finish :) </p>
+    </center>
+</div>
+<br>
+<div class="benchmark_class" id="benchmark_id">
+    <table>
+        <tr>
+            <th>access type</th>
+            <th>speed (in ms)</th>
+        </tr>
+        <tr>
+            <td>textContent</td>
+            <td id="td_textContent">?</td>
+        </tr>
+        <tr>
+            <td>innerText</td>
+            <td id="td_innerText">?</td>
+        </tr>
+        <tr>
+            <td>innerHTML</td>
+            <td id="td_innerHTML">?</td>
+        </tr>
+        <tr>
+            <td>outerHTML</td>
+            <td id="td_outerHTML">?</td>
+        </tr>
+    </table>
+
+    <p id="id_n"> benchmark is running... </p>
+</div>
+
+</body>
+</html>
+
+<script>
+    const benchmarkDiv = document.getElementById("benchmark_id");
+    const dummyDiv = document.getElementById("dummy_id")
+    const n = 1000000
+
+    let t0 = performance.now();
+    for(let i = 0; i < n; i++) {
+        const x = dummyDiv.innerText;
+    }
+    const t_innerText = performance.now() - t0;
+
+    t0 = performance.now();
+    for(let i = 0; i < n; i++) {
+        const x = dummyDiv.innerHTML;
+    }
+    const t_innerHTML = performance.now() - t0;
+
+    t0 = performance.now();
+    for(let i = 0; i < n; i++) {
+        const x = dummyDiv.textContent;
+    }
+    const t_textContent = performance.now() - t0;
+
+    t0 = performance.now();
+    for(let i = 0; i < n; i++) {
+        const x = dummyDiv.outerHTML;
+    }
+    const t_outerHTML = performance.now() - t0;
+
+    // print times to console
+    console.log("innerHMTL",    t_innerHTML,    "\n", dummyDiv.innerHTML)
+    console.log("innerText",    t_innerText,    "\n", dummyDiv.innerText)
+    console.log("textContent",  t_textContent,  "\n", dummyDiv.textContent)
+    console.log("outerHTML",    t_outerHTML,    "\n", dummyDiv.outerHTML)
+
+    // display times in the table
+    document.getElementById('td_textContent').innerText = "" + t_textContent.toFixed(2) + "ms";
+    document.getElementById('td_innerText').innerText = "" + t_innerText.toFixed(2) + "ms";
+    document.getElementById('td_innerHTML').innerText = "" + t_innerHTML.toFixed(2) + "ms";
+    document.getElementById('td_outerHTML').innerText = "" + t_outerHTML.toFixed(2) + "ms";
+
+    // display n
+    document.getElementById("id_n").innerText = "finished benchmark with n=" + n + " individual accesses";
+</script>
