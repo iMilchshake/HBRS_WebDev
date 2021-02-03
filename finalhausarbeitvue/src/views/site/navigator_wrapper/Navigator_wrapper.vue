@@ -19,13 +19,16 @@
         <div class="QA_section" v-for="subtask in getTaskData.subtasks" v-bind:key="subtask">
           <div v-if="subtask.override === undefined">
             <h3> {{ subtask.q }} </h3>
-            <p> {{ subtask.a }}</p>
+            <div class="codeblock">
+              <code> {{ subtask.a }}</code>
+            </div>
           </div>
           <div v-else-if="subtask.override === 'html_wireframe'">
             <h3> {{ subtask.q }} </h3>
             <img v-if="subtask.wireframe !== undefined" :src="subtask.wireframe">
             <br>
-            <a v-if="subtask.video_link !== undefined" target="_blank" rel="noopener noreferrer" :href=subtask.video_link> Link to Video! </a>
+            <a v-if="subtask.video_link !== undefined" target="_blank" rel="noopener noreferrer"
+               :href=subtask.video_link> Link to Video! </a>
             <br>
             <a target="_blank" rel="noopener noreferrer" :href="subtask.path"> Link to Solution! </a>
           </div>
@@ -84,8 +87,20 @@ export default {
 
 <style scoped>
 
-.QA_section p, h3 {
+.codeblock {
+  margin-bottom: 1em;
+  padding: 12px 8px;
+  background-color: #eff0f1;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.QA_section h3, code{
   white-space: pre-wrap;
+}
+
+.QA_section code {
+  word-break: break-all; /* break code pieces to allow responsive design TODO: remove /t's when too small*/
 }
 
 .nav_navigator {
@@ -114,8 +129,9 @@ a {
 }
 
 img {
-  max-width: 600px;
   max-height: 450px;
+  max-width: 100%;
+  height: auto;
 }
 
 .navigation_wrapper {
