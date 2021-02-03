@@ -1,5 +1,6 @@
 <template>
   <div class="navigation_wrapper">
+    <!-- nav-bar -->
     <div class="nav_navigator">
       <div class="topic_group" v-for="exercise in getData" v-bind:key="exercise">
         <router-link to="" @click="topicChange(exercise.exercise)"> {{ exercise.exercise }}</router-link>
@@ -10,12 +11,13 @@
         </div>
       </div>
     </div>
+
+    <!-- main content -->
     <div class="content" v-if="getTopic !== ''">
       <h1> {{ getTopic }} - {{ getHeading }}</h1>
       <hr>
       <div class="QA" v-if="getSubTopic !== ''">
         <h2> {{ getTaskData.task }} - {{ getTaskData.txt }} </h2>
-        <br>
         <div class="QA_section" v-for="subtask in getTaskData.subtasks" v-bind:key="subtask">
           <div v-if="subtask.override === undefined">
             <h3> {{ subtask.q }} </h3>
@@ -24,15 +26,35 @@
             </div>
           </div>
           <div v-else-if="subtask.override === 'html_wireframe'">
+            <!-- question heading -->
             <h3> {{ subtask.q }} </h3>
-            <img v-if="subtask.wireframe !== undefined" :src="subtask.wireframe">
+            <p v-if="subtask.q_extra !== undefined"> {{ subtask.q_extra }}</p>
+
             <br>
-            <a v-if="subtask.video_link !== undefined" target="_blank" rel="noopener noreferrer"
-               :href=subtask.video_link> Link to Video! </a>
-            <br v-if="subtask.video_link !== undefined">
-            <div v-if="subtask.show_src === true" class="codeblock">
+
+            <!-- image -->
+            <div v-if="subtask.wireframe !== undefined">
+              <img :src="subtask.wireframe">
+              <br>
+            </div>
+
+            <!-- link to video-image -->
+            <div v-if="subtask.video_link !== undefined">
+              <a target="_blank" rel="noopener noreferrer" :href=subtask.video_link> Link to Video! </a>
+              <br>
+            </div>
+
+            <!-- answer-block -->
+            <div v-if="subtask.a !== undefined" class="codeblock">
+              <code> {{ subtask.a }}</code>
+            </div>
+
+            <!-- source-code block (only one subtask!) -->
+            <div v-if="subtask.src !== undefined" class="codeblock">
               <code> {{ current_src }}</code>
             </div>
+
+            <!-- link to solution -->
             <a target="_blank" rel="noopener noreferrer" :href="subtask.path"> Link to Solution! </a>
           </div>
         </div>
@@ -61,8 +83,8 @@ export default {
       this.$store.commit('changeSubTopic', subtopic);
       const currentSubTopic = this.getTaskData;
 
-      if (subtopic !== "" && currentSubTopic.subtasks.length === 1 && currentSubTopic.subtasks[0].show_src === true) {
-        this.getSource(currentSubTopic.subtasks[0].path); // TODO: XD
+      if (subtopic !== "" && currentSubTopic.subtasks.length === 1 && currentSubTopic.subtasks[0].src !== undefined) {
+        this.getSource(currentSubTopic.subtasks[0].src); // TODO: XD
       }
     },
     async getSource(path) {
