@@ -29,7 +29,10 @@
             <br>
             <a v-if="subtask.video_link !== undefined" target="_blank" rel="noopener noreferrer"
                :href=subtask.video_link> Link to Video! </a>
-            <br>
+            <br v-if="subtask.video_link !== undefined">
+            <div v-if="subtask.show_src === true" class="codeblock">
+              <code> {{ current_src }}</code>
+            </div>
             <a target="_blank" rel="noopener noreferrer" :href="subtask.path"> Link to Solution! </a>
           </div>
         </div>
@@ -42,15 +45,29 @@
 
 export default {
   name: "Navigator_wrapper",
+  data: function () {
+    return {
+      current_src: ""
+    }
+  },
   methods: {
     topicChange: function (topic) {
       console.log("change topic to:", topic);
-      this.$store.commit('changeTopic', topic)
-      this.$store.commit('changeSubTopic', "")
+      this.$store.commit('changeTopic', topic);
+      this.$store.commit('changeSubTopic', "");
     },
     subTopicChange(subtopic) {
       console.log("change subtopic to:", subtopic);
-      this.$store.commit('changeSubTopic', subtopic)
+      this.$store.commit('changeSubTopic', subtopic);
+      const currentSubTopic = this.getTaskData;
+
+      if (subtopic !== "" && currentSubTopic.subtasks.length === 1 && currentSubTopic.subtasks[0].show_src === true) {
+        this.getSource(currentSubTopic.subtasks[0].path); // TODO: XD
+      }
+    },
+    async getSource(path) {
+      const code = await fetch(path).then(x => x.text());
+      this.current_src = code;
     }
   },
   computed: {
@@ -95,7 +112,7 @@ export default {
   border: 1px solid black;
 }
 
-.QA_section h3, code{
+.QA_section h1, h2, h3, code {
   white-space: pre-wrap;
 }
 
