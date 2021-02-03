@@ -23,11 +23,11 @@
 <body>
 <div class="dummy_class" id="dummy_id">
     <center>
-    <h1> This is a dummy page </h1>
-    <h2> like, dont expect any content</h2>
-    <p> just some text with empty promises</p>
-    <p> really empty page </p>
-    <p> just wait for the benchmark to finish :) </p>
+        <h1> This is a dummy page </h1>
+        <h2> like, dont expect any content</h2>
+        <p> just some text with empty promises</p>
+        <p> really empty page </p>
+        <p> just wait for the benchmark to finish :) </p>
     </center>
 </div>
 <br>
@@ -67,34 +67,34 @@
     const n = 1000000
 
     let t0 = performance.now();
-    for(let i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         const x = dummyDiv.innerText;
     }
     const t_innerText = performance.now() - t0;
 
     t0 = performance.now();
-    for(let i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         const x = dummyDiv.innerHTML;
     }
     const t_innerHTML = performance.now() - t0;
 
     t0 = performance.now();
-    for(let i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         const x = dummyDiv.textContent;
     }
     const t_textContent = performance.now() - t0;
 
     t0 = performance.now();
-    for(let i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         const x = dummyDiv.outerHTML;
     }
     const t_outerHTML = performance.now() - t0;
 
     // print times to console
-    console.log("innerHMTL",    t_innerHTML,    "\n", dummyDiv.innerHTML)
-    console.log("innerText",    t_innerText,    "\n", dummyDiv.innerText)
-    console.log("textContent",  t_textContent,  "\n", dummyDiv.textContent)
-    console.log("outerHTML",    t_outerHTML,    "\n", dummyDiv.outerHTML)
+    console.log("innerHMTL", t_innerHTML, "\n", dummyDiv.innerHTML)
+    console.log("innerText", t_innerText, "\n", dummyDiv.innerText)
+    console.log("textContent", t_textContent, "\n", dummyDiv.textContent)
+    console.log("outerHTML", t_outerHTML, "\n", dummyDiv.outerHTML)
 
     // display times in the table
     document.getElementById('td_textContent').innerText = "" + t_textContent.toFixed(2) + "ms";
