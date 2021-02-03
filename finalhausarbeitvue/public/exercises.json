@@ -154,7 +154,7 @@
           {
             "override": "html_wireframe",
             "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/holy-grail1.png",
-            "q": "Implementieren Sie dann ausschließlich mit HTML und CSS Flexbox folgendes responsive Webdesign nach der Desktop-First-Strategie!",
+            "q": "Implementieren Sie ausschließlich mit HTML und CSS Flexbox folgendes responsive Webdesign nach der Desktop-First-Strategie!",
             "path": "/solutions/u3/a1.html"
           }
         ]
@@ -166,7 +166,7 @@
           {
             "override": "html_wireframe",
             "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/holy-grail1.png",
-            "q": "Implementieren Sie dann das gleiche responsive Webdesign wie in Aufgabe 3.1 allerdings mit Grid und der Mobile-First-Strategie! Vermeiden Sie diesmal außerdem das Erscheinen von Scrollbars.",
+            "q": "Implementieren Sie das gleiche responsive Webdesign wie in Aufgabe 3.1 allerdings mit Grid und der Mobile-First-Strategie! Vermeiden Sie diesmal außerdem das Erscheinen von Scrollbars.",
             "path": "/solutions/u3/a2.html"
           }
         ]
@@ -177,7 +177,7 @@
         "subtasks": [
           {
             "override": "html_wireframe",
-            "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/holy-grail1.png",
+            "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/landing.png",
             "q": "Implementieren Sie folgende Landing Page responsiv mit Grid Layout. Vermeiden Sie außerdem das Erscheinen von Scrollbars so weit wie möglich.",
             "path": "/solutions/u3/a3.html"
           }
@@ -187,8 +187,172 @@
   },
   {
     "exercise": "Übung 4",
-    "heading": "",
+    "heading": "JavaScript",
     "tasks": [
+      {
+        "task": "Aufgabe 1",
+        "txt": "Funktionen",
+        "subtasks": [
+          {
+            "q": "Schreiben Sie eine Funktion identity(), die ein Argument als Parameter entgegen nimmt und dieses als Ergebnis zurück gibt.",
+            "a": "    function identity(x) {\n        return x;\n    }"
+          },
+          {
+            "q": "Schreiben Sie eine Funktion identity_function(), die ein Argument als Parameter entgegen nimmt und eine Funktion zurück gibt, die dieses Argument zurück gibt.",
+            "a": "    function identity_function(x) {\n        return function() {\n            return x;\n        }\n    }"
+          },
+          {
+            "q": "Schreiben Sie zwei binäre Funktionen add und mul, die Summe und Produkt berechnen.",
+            "a": "    function add(x, y) {\n        return x+y;\n    }\n    function mul(x, y) {\n        return x*y;\n    }"
+          },
+          {
+            "q": "Schreiben Sie eine Addier-Funktion addf(), so dass addf(x)(y) genau x + y zurück gibt. (Es haben also zwei Funktionsaufrufe zu erfolgen. addf(x) liefert eine Funktion, die auf y angewandt wird.)",
+            "a": "    function addf(x) {\n        return function(y) {\n            return x + y;\n        }\n    }"
+          },
+          {
+            "q": "Schreiben Sie eine Funktion applyf(), die aus einer binären Funktion wie add(x,y) eine Funktion addfberechnet, die mit zwei Aufrufen das gleiche Ergebnis liefert, z.B. addf = applyf(add); addf(x)(y) soll add(x,y) liefern. Entsprechend applyf(mul)(5)(6) soll 30 liefern, wenn mul die binäre Multiplikation ist.",
+            "a": "    function applyf(func) {\n        return function(x) {\n            return function (y) {\n                return func(x, y);\n            }\n        }\n    }"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 2",
+        "txt": "Objekte",
+        "subtasks": [
+          {
+            "q": "Schreiben Sie die Prototypen Person und Auto in JavaScript, so dass jede Person weiß, welche Autos sie besitzt. Schreiben Sie eine Funktion conflict(), die feststellt, ob ein Auto von mehr als einer Person besessen wird.",
+            "a": "<script>\n\n    var persons = []\n\n    // Person prototype\n    function Person(n) {\n        let person = {\n            name: n,\n            cars: []\n        };\n\n        person.addCar = function(car) {\n            person.cars.push(car);\n        };\n\n        persons.push(person);\n        return person;\n    }\n\n    // Auto prototype\n    function Car(nr) {\n        let car = {\n            nr: nr\n        };\n\n        return car;\n    }\n\n    // conflict method\n    function conflict(car) {\n        let found_cars = [];\n        let conflict = false;\n        persons.forEach(function(p){  // for each person\n            p.cars.forEach(function(c){  // for each car\n                    if(found_cars.includes(c))\n                        conflict = true;  //conflict found!\n                    else\n                        found_cars.push(c);\n                }\n            );\n        });\n        return conflict;\n    }\n\n    // declare\n    const pers1 = new Person(\"Rudolf\");\n    const pers2 = new Person(\"Kevin\");\n    const car1 = new Car(123);\n    const car2 = new Car(567);\n\n    // add cars to persons\n    pers1.addCar(car1);\n    pers2.addCar(car2);\n\n    // debug\n    console.log(\"persons now have cars: \", pers1, pers2);\n    console.log(\"persons should be listed in persons: \", persons);\n    console.log(\"conflict found?\", conflict(car1));\n\n    // create a conflict\n    pers2.addCar(car1);\n\n    // debug (conflict)\n    console.log(\"conflict found?\", conflict(car1));\n\n</script>"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 3",
+        "txt": "Fibonacci",
+        "subtasks": [
+          {
+            "q": "Schreiben Sie im Browser die Fibonacci-Funktion in JavaScript und geben Sie die ersten 2000 Fibonacci-Zahlen 0,1,1,2,3,5,8,13,... auf der Konsole mit console.log() aus.\n\nAchten Sie auf Performanz: Berechnen Sie jeden Fibonacci-Wert nur einmal. Speichern Sie zu diesem Zweck jede bereits berechnete Fibonacci-Zahl in einer Tabelle.",
+            "a": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Übung 4 - Aufgabe 3</title>\n    <style>\n        table, th, td {\n            border: 1px solid black;\n        }\n    </style>\n</head>\n<body>\n    <table>\n        <thead>\n        <tr>\n            <th>i</th>\n            <th>fib</th>\n        </tr>\n        </thead>\n        <tbody>\n        </tbody>\n    </table>\n</body>\n\n<script>\n    console.log(Number.MAX_SAFE_INTEGER)\n\n    let x_last = Number(0);\n    let x = Number(1);\n    let table = document.querySelector(\"table\");\n\n\n    for(let i = 1; i <= 2000; i++) {\n        // calculate new value\n        let x_new = Number(x + x_last);\n\n        // update variables\n        x_last = x;\n        x = x_new;\n\n        // debug\n        console.log(i, x_last);\n\n        // add table row\n        let row = table.insertRow();\n        row.insertCell().appendChild(document.createTextNode(i));\n        row.insertCell().appendChild(document.createTextNode(x_last));\n    }\n</script>\n</html>"
+          },
+          {
+            "q": "Was ist die größte Fibonacci-Zahl, die sich noch als Integer sicher speichern lässt (Number.MAX_SAFE_INTEGER)? Die wievielte Fibonacci-Zahl in der Fibonacci-Folge ist das?",
+            "a": "fib(79) ist die erste Zahl, welche größer als Number.MAX_SAFE_INTEGER ist. Somit ist fib(78) die letzte Zahl, welche sich sicher mit Number() speichern lässt."
+          },
+          {
+            "q": "Was ist die größte Fibonacci-Zahl, die sich noch als Number speichern lässt (Number.MAX_VALUE)? Die wievielte Fibonacci-Zahl in der Fibonacci-Folge ist das (d.h. welche Stelle in der Fibonacci-Folge)?",
+            "a": "fib(1477) ist die erste Zahl, welche größer als Number.MAX_VALUE ist. Somit ist fib(1476) die letzte Zahl, welche sich noch mit Number() speichern lässt."
+          },
+          {
+            "q": "Wechseln Sie zu BigInt, um alle 2000 Fibonacci-Zahlen korrekt anzuzeigen. Geben Sie hier HTML- und JavaScript-Code zusammen ein:",
+            "a": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Übung 4 - Aufgabe 3</title>\n    <style>\n        table, th, td {\n            border: 1px solid black;\n            text-align: left;\n        }\n    </style>\n</head>\n<body>\n    <table>\n        <thead>\n        <tr>\n            <th>i</th>\n            <th>fib</th>\n        </tr>\n        </thead>\n        <tbody>\n        </tbody>\n    </table>\n</body>\n\n<script>\n    console.log(Number.MAX_SAFE_INTEGER)\n\n    let x_last = BigInt(0);\n    let x = BigInt(1);\n    let table = document.querySelector(\"table\");\n\n\n    for(let i = 1; i <= 2000; i++) {\n        // calculate new value\n        let x_new = BigInt(x + x_last);\n\n        // update variables\n        x_last = x;\n        x = x_new;\n\n        // debug\n        console.log(i, x_last);\n\n        // add table row\n        let row = table.insertRow();\n        row.insertCell().appendChild(document.createTextNode(i));\n        row.insertCell().appendChild(document.createTextNode(x_last));\n    }\n</script>\n</html>"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 4",
+        "txt": "Topsort",
+        "subtasks": [
+          {
+            "q": "Schreiben Sie in JavaScript eine Funktion topsort(), die eine topologische Sortierung berechnet.\n\nAchten Sie auf Performanz. Berechnen Sie die topologische Sortierung in linearer Zeit (Average Case).",
+            "a": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Übung 4 - Aufgabe 4</title>\n</head>\n<script>\n\n    function topSort(node) {\n        // add edge to found nodes\n        found_nodes.push(node);\n\n        // process each new adjacent node first\n        node.edges.forEach(n => {\n            if(!found_nodes.includes(n)) {\n                topSort(n);\n            }\n        })\n\n        // all adjacent nodes have been processed\n        // add node to top_sort_reversed\n        top_sort_reversed.push(node);\n    }\n\n    // constructor for Node Object\n    function Node(name, nodes) {\n        let n = {\n            name: name,\n            edges: []\n        };\n\n        n.addEdge = function(node) {\n            n.edges.push(node);\n        }\n\n        if(nodes) {\n            nodes.forEach(node => {\n                n.addEdge(node);\n            })\n        }\n        return n;\n    }\n\n    // define graph\n    let graph_def = [[\"A\",\"C\"],[\"A\",\"B\"],[\"A\",\"D\"],[\"C\",\"D\"],[\"D\",\"E\"],[\"E\",\"F\"],[\"B\",\"G\"]];\n    let node_names_processed = [];\n    let graph = [];\n\n    // generate graph\n    graph_def.forEach(edge => {\n       edge.forEach(node_name => {\n           if(!node_names_processed.includes(node_name)) {\n               graph.push(new Node(node_name));\n               node_names_processed.push(node_name);\n           }\n       })\n    })\n\n    // add edges to nodes\n    graph_def.forEach(edge => {\n        let start_node = graph.find(n => n.name === edge[0]);\n        let end_node = graph.find(n => n.name === edge[1]);\n        start_node.addEdge(end_node);\n    })\n\n    // declare needed structures\n    let top_sort_reversed = [];\n    let top_sort = [];\n    let found_nodes = [];\n\n    // generate top_sort_reversed\n    graph.forEach(n => {\n        if(!found_nodes.includes(n)) {\n            topSort(n);\n        }\n    })\n\n    // flip top_sort_reversed into top_sort\n    while(top_sort_reversed.length>0) {\n        top_sort.push(top_sort_reversed.pop());\n    }\n\n    // debug/test result\n    console.log(\"debug:\")\n    console.log(\"graph: \", graph);\n    console.log(\"top_sort: \", top_sort);\n    console.log(\"\");\n    console.log(\"result:\")\n    console.log(\"top_sort (as list): \", top_sort.map(x => x.name));\n</script>\n<body>\n\n</body>\n</html>"
+          },
+          {
+            "q": "Testen Sie Ihren JavaScript-Code. Verwenden Sie für Ihre Tests die Funktion console.assert. Geben Sie hier Ihre Tests ein:",
+            "a": "    // debug/test result\n    console.log(\"debug:\")\n    console.log(\"graph: \", graph);\n    console.log(\"top_sort: \", top_sort);\n    console.log(\"\");\n    console.log(\"result:\")\n    console.log(\"top_sort (as list): \", top_sort.map(x => x.name));"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "exercise": "Übung 5",
+    "heading": "ECMAScript",
+    "tasks": [
+      {
+        "task": "Aufgabe 1",
+        "txt": "Klasse für Vorrangrelationen",
+        "subtasks": [
+          {
+            "q": "Schreiben Sie eine ES6-Klasse Vorrang für Vorrangrelationen. Verwenden Sie die neuen Sprach-Konzepte aus der Vorlesung so weit wie möglich.",
+            "a": "class Vorrang {\n    constructor(graph_def) {\n        this._graph_def = graph_def;\n        this.node_names_processed = [];\n        this.graph = [];\n\n        // generate graph\n        this._graph_def.forEach(edge => {\n            edge.forEach(node_name => {\n                if (!this.node_names_processed.includes(node_name)) {\n                    this.graph.push(new Node(node_name));\n                    this.node_names_processed.push(node_name);\n                }\n            })\n        })\n\n        // add edges to nodes\n        this._graph_def.forEach(edge => {\n            let start_node = this.graph.find(n => n._name === edge[0]);\n            let end_node = this.graph.find(n => n._name === edge[1]);\n            start_node.addEdge(end_node);\n        })\n\n        // declare needed structures\n        this.top_sort_reversed = [];\n        this.top_sort = [];\n        this.found_nodes = [];\n\n        // generate top_sort_reversed\n        this.graph.forEach(n => {\n            if (!this.found_nodes.includes(n)) {\n                this.topSortHelper(n);\n            }\n        })\n\n        // flip top_sort_reversed into top_sort\n        while (this.top_sort_reversed.length > 0) {\n            this.top_sort.push(this.top_sort_reversed.pop());\n        }\n    }\n\n    topSort() {\n        return this.top_sort.map(x => x._name)\n    }\n\n    topSortHelper(node) {\n        // add edge to found nodes\n        this.found_nodes.push(node);\n\n        // process each new adjacent node first\n        node._edges.forEach(n => {\n            if (!this.found_nodes.includes(n)) {\n                this.topSortHelper(n);\n            }\n        })\n\n        // all adjacent nodes have been processed\n        // add node to top_sort_reversed\n        this.top_sort_reversed.push(node);\n    }\n}\n\nclass Node {\n    constructor(name) {\n        this._name = name;\n        this._edges = [];\n    }\n\n    addEdge(node) {\n        this._edges.push(node);\n    }\n}\n\nlet myTopSort = new Vorrang([\n    [\"A\", \"C\"],\n    [\"A\", \"B\"],\n    [\"A\", \"D\"],\n    [\"C\", \"D\"],\n    [\"D\", \"E\"],\n    [\"E\", \"F\"],\n    [\"B\", \"G\"]\n]).topSort();\nlet correctTopSort = [\"A\", \"B\", \"G\", \"C\", \"D\", \"E\", \"F\"]\nlet sortsEquals = true;\n\n// test if sorts are equal\nfor (let i = 0; i < myTopSort.length; i++) {\n    if (myTopSort[i] != correctTopSort[i]) {\n        sortsEquals = false;\n    }\n}\n\nconsole.assert(sortsEquals, {\n    myTopSort: myTopSort,\n    correctTopSort: correctTopSort,\n    error: \"not equal\"\n})\nconsole.log(myTopSort)"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 2",
+        "txt": "Topologische Iterierbarkeit",
+        "subtasks": [
+          {
+            "q": "Stellen Sie bei Ihrer Klasse aus der letzten Aufgabe die topologische Iterierbarkeit her (zunächst über das Iterationsprotokoll, ohne Generator, ohne yield).",
+            "a": "class VorrangIterator extends Vorrang {\n    [Symbol.iterator]() {\n        let i = 0;\n        const sorted = this.topSort();\n        console.log(\"sorted:\", sorted);\n        return {\n            next() {\n                return {\n                    value: sorted[i++],\n                    done: i > sorted.length\n                }\n            }\n        }\n    }\n}\n\n// define and calculate topSort\nlet vorrang = new VorrangIterator([\n    [\"A\", \"C\"],\n    [\"A\", \"B\"],\n    [\"A\", \"D\"],\n    [\"C\", \"D\"],\n    [\"D\", \"E\"],\n    [\"E\", \"F\"],\n    [\"B\", \"G\"]\n]);\nlet myTopSort = vorrang.topSort();\nlet correctTopSort = [\"A\", \"B\", \"G\", \"C\", \"D\", \"E\", \"F\", \"SAD\"]\nlet sortsEquals = true;\n\n\n// test / debug\nlet i = 0;\nfor (const x of vorrang) {\n    console.log(x);\n    console.assert(x === correctTopSort[i++])\n}\nconsole.assert(vorrang[Symbol.iterator].length === correctTopSort.length)\nconsole.assert(sortsEquals, {\n    myTopSort: myTopSort,\n    correctTopSort: correctTopSort,\n    error: \"not equal\"\n})"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 3",
+        "txt": "Topologischer Generator",
+        "subtasks": [
+          {
+            "q": "Stellen Sie bei Ihrer Klasse aus der vorletzten Aufgabe die topologische Iterierbarkeit mittels Generator her.",
+            "a": "class VorrangGenerator extends Vorrang {\n    * gen() {\n        let i = 0;\n        while (i < this.top_sort.length) yield this.top_sort[i++];\n    }\n}\n\n// define and calculate topSort\nlet vorrang = new VorrangGenerator([\n    [\"A\", \"C\"],\n    [\"A\", \"B\"],\n    [\"A\", \"D\"],\n    [\"C\", \"D\"],\n    [\"D\", \"E\"],\n    [\"E\", \"F\"],\n    [\"B\", \"G\"]\n]);\nlet myTopSort = vorrang.topSort();\nlet correctTopSort = [\"A\", \"B\", \"G\", \"C\", \"D\", \"E\", \"F\"]\nlet sortsEquals = true;\n\n\n// test / debug\nlet i = 0;\nconst g = vorrang.gen();\nfor (let l = 0; l < myTopSort.length; l++) {\n    const x = g.next().value._name;\n    console.log(x);\n    console.assert(x === correctTopSort[i++])\n}\nconsole.assert(sortsEquals, {\n    myTopSort: myTopSort,\n    correctTopSort: correctTopSort,\n    error: \"not equal\"\n})"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 4",
+        "txt": "Proxy",
+        "subtasks": [
+          {
+            "q": "Erweitern Sie Ihre Vorrang-Klasse um Logging, indem Sie ein Proxy einfügen. Lassen Sie sich vom Logger bei jedem Schritt ausgeben, wie viele der Vorrangrelationen noch übrig bleiben. Verwenden Sie so weit wie möglich High-Level-Methoden wie Object.keys und High-Level-Datenstrukturen wie Map und Set und deren Methoden, anstatt mühsam von Hand zu iterieren und zu zählen.",
+            "a": "// define Vorrang\nlet v = new Vorrang([\n    [\"A\", \"C\"],\n    [\"A\", \"B\"],\n    [\"A\", \"D\"],\n    [\"C\", \"D\"],\n    [\"D\", \"E\"],\n    [\"E\", \"F\"],\n    [\"B\", \"G\"]\n]);\n\n// define handler\nconst vorrangLoggerHandler = {\n    get: function(target, prop, receiver) {\n        if (prop === 'topSortHelper') {\n            console.log(target.found_nodes.length + \" nodes have been processed\", \"-\",\n                target.node_names_processed.length - target.found_nodes.length + \" nodes left\");\n        }\n        return target[prop];\n    }\n};\n\n// define proxy\nconst proxy = new Proxy(v, vorrangLoggerHandler);\n\n// run topSort function on proxy\nlet topSort = proxy.topSort();\n\n// print result\nconsole.log(topSort);\n\n// test result\nlet correctTopSort = [\"A\", \"B\", \"G\", \"C\", \"D\", \"E\", \"F\"]\n\n// test if sorts are equal\nlet sortsEquals = true;\nfor (let i = 0; i < topSort.length; i++) {\n    if (topSort[i] !== correctTopSort[i]) {\n        sortsEquals = false;\n    }\n}\nconsole.assert(sortsEquals, {\n    topSort: topSort,\n    correctTopSort: correctTopSort,\n    error: \"not equal\"\n})"
+          }
+        ]
+      },
+      {
+        "task": "Aufgabe 5",
+        "txt": "DeepCopy",
+        "subtasks": [
+          {
+            "q": "Schreiben Sie eine rekursive Funktion deepCopy( struct ) als ES6-Ausdruck, so dass beliebig geschachtelte Arrays und Objekte struct tiefenkopiert werden können.",
+            "a": "// test object with numbers, strings, objects und arrays\nlet testObject = {\n    a: 3,\n    b: \"abc\",\n    c: {\n        x: {\n            pain: \"pain?\"\n        },\n        y: [\"pain1\", \"pain2\"]\n    },\n    d: [1, \"234\"]\n}\n\n// define deepCopy function\nlet deepCopy = (struct) => {\n    return Object.fromEntries(Object.entries(struct));\n}\n\n// copy by reference\ntestObjectCopied = testObject;\n\n// copy using deepCopy\ntestObjectDeepCopied = deepCopy(testObject);\n\n// test and debug\nconsole.assert(testObject === testObjectCopied); // should be the same object\nconsole.assert(testObject !== testObjectDeepCopied); // shouldn't be the same object, but have the same content\nconsole.log(\"original object: \\n\", testObject);\nconsole.log(\"deepCopied object: \\n\", testObjectDeepCopied);"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "exercise": "Übung 6",
+    "heading": "JavaScript",
+    "tasks": [
+      {
+        "task": "",
+        "txt": "",
+        "subtasks": [
+          {
+            "q": "",
+            "a": ""
+          }
+        ]
+      },
+      {
+        "task": "",
+        "txt": "",
+        "subtasks": [
+          {
+            "q": "",
+            "a": ""
+          }
+        ]
+      },
+      {
+        "task": "",
+        "txt": "",
+        "subtasks": [
+          {
+            "q": "",
+            "a": ""
+          }
+        ]
+      },
       {
         "task": "",
         "txt": "",
