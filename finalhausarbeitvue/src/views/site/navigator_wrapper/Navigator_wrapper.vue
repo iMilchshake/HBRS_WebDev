@@ -134,7 +134,7 @@ export default {
   border: 1px solid black;
 }
 
-.QA_section h1, h2, h3, code {
+.QA_section h1, h2, h3, p, code {
   white-space: pre-wrap;
 }
 

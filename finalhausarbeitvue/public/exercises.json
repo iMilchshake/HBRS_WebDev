@@ -86,7 +86,7 @@
             "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/wireframe01.jpg",
             "q": "Mit welchem HTML-Code (ohne CSS, nur mit HTML-Tags) kann man diesen Wireframe exakt nachbilden?",
             "path": "./solutions/u1/a4_wireframe.html",
-            "show_src": true
+            "src": "./solutions/u1/a4_wireframe.html"
           }
         ]
       }
@@ -139,7 +139,7 @@
             "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/survey.png",
             "q": "Mit welchem HTML- und CSS-Code kann man diesen Wireframe exakt nachbilden?",
             "path": "./solutions/u2/a3_wireframe.html",
-            "show_src": true
+            "src": "./solutions/u2/a3_wireframe.html"
           }
         ]
       }
@@ -157,7 +157,8 @@
             "override": "html_wireframe",
             "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/holy-grail1.png",
             "q": "Implementieren Sie ausschließlich mit HTML und CSS Flexbox folgendes responsive Webdesign nach der Desktop-First-Strategie!",
-            "path": "./solutions/u3/a1.html"
+            "path": "./solutions/u3/a1.html",
+            "src": "./solutions/u3/a1.html"
           }
         ]
       },
@@ -169,7 +170,8 @@
             "override": "html_wireframe",
             "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/holy-grail1.png",
             "q": "Implementieren Sie das gleiche responsive Webdesign wie in Aufgabe 3.1 allerdings mit Grid und der Mobile-First-Strategie! Vermeiden Sie diesmal außerdem das Erscheinen von Scrollbars.",
-            "path": "./solutions/u3/a2.html"
+            "path": "./solutions/u3/a2.html",
+            "src": "./solutions/u3/a2.html"
           }
         ]
       },
@@ -181,7 +183,8 @@
             "override": "html_wireframe",
             "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/landing.png",
             "q": "Implementieren Sie folgende Landing Page responsiv mit Grid Layout. Vermeiden Sie außerdem das Erscheinen von Scrollbars so weit wie möglich.",
-            "path": "./solutions/u3/a3.html"
+            "path": "./solutions/u3/a3.html",
+            "src": "./solutions/u3/a3.html"
           }
         ]
       }
@@ -410,9 +413,8 @@
           {
             "override": "html_wireframe",
             "q": "Implementieren Sie Performanzmessungen zum Vergleich von innerHTML, innerText, textContent und outerHTML selbstständig in JavaScript durch Nutzung der DOM API.",
-            "a": "asdasd",
             "path": "./solutions/u7/a1.html",
-            "show_src": true
+            "src": "./solutions/u7/a1.html"
           }
         ]
       },
@@ -423,9 +425,8 @@
           {
             "override": "html_wireframe",
             "q": "Implementieren Sie die interaktive Anwendung \"Rednerliste mit Zeitmessung\" selbstständig in JavaScript durch Nutzung der DOM API und der Timer-Funktionen.",
-            "a": "asdasd",
             "path": "./solutions/u7/a2.html",
-            "show_src": true
+            "src": "./solutions/u7/a2.html"
           }
         ]
       }
@@ -436,42 +437,41 @@
     "heading": "JavaScript",
     "tasks": [
       {
-        "task": "",
-        "txt": "",
+        "task": "Aufgabe 1",
+        "txt": "Promises",
         "subtasks": [
           {
-            "q": "",
-            "a": ""
+            "override": "html_wireframe",
+            "q": "Laden Sie mit der fetch-API parallel zwei Text-Dateien vom Server. Die beiden Dateien sollen zeilenweise konkateniert werden.",
+            "q_extra": "Erstellen Sie auf Ihrem Server www2.inf.h-brs.de (oder localhost) zwei Text-Dateien A.txt und B.txt mit ungefähr gleich vielen Zeilen. Geben Sie auf einer Webseite den Inhalt beider Dateien zeilenweise aus, wobei der Anfang der Zeile aus A.txt und das Ende aus B.txt stammen soll. Erzielen Sie max. Geschwindigkeit durch maximale Parallelität. Achten Sie gleichzeitig auf Korrektheit. Verwenden Sie dabei ausschließlich die Promise API ohne async / await.",
+            "a": "Ich habe dies gelöst indem ich...",
+            "src": "./solutions/u8/a1.html",
+            "path": "./solutions/u8/a1.html"
           }
         ]
       },
       {
-        "task": "",
-        "txt": "",
+        "task": "Aufgabe 2",
+        "txt": "async / await",
         "subtasks": [
           {
-            "q": "",
-            "a": ""
+            "override": "html_wireframe",
+            "q": "Lösen Sie die letzte Aufgabe mit async / await statt Promise.",
+            "src": "./solutions/u8/a2.html",
+            "path": "./solutions/u8/a2.html"
           }
         ]
       },
       {
-        "task": "",
-        "txt": "",
+        "task": "Aufgabe 3",
+        "txt": "WWW-Navigator",
         "subtasks": [
           {
-            "q": "",
-            "a": ""
-          }
-        ]
-      },
-      {
-        "task": "",
-        "txt": "",
-        "subtasks": [
-          {
-            "q": "",
-            "a": ""
+            "override": "html_wireframe",
+            "q": "Schreiben Sie einen Navigator für die Fachbegriffe des WWW zu den Oberthemen HTML, CSS und JavaScript.",
+            "q_extra": "Im Hauptmenü sollen diese 3 Oberthemen zur Auswahl stehen. Im Untermenü soll eine zugehörige Liste von Fachbegriffen zum jeweiligen ausgewählten Oberthema stehen. In der Mitte soll eine Dokumentation zum ausgewählten Fachbegriff erscheinen",
+            "src": "./solutions/u8/a3.js",
+            "path": "./solutions/u8/a3.html"
           }
         ]
       }
@@ -482,42 +482,33 @@
     "heading": "JavaScript",
     "tasks": [
       {
-        "task": "",
-        "txt": "",
+        "task": "Aufgabe 1",
+        "txt": "Komponente in Vue.js",
         "subtasks": [
           {
-            "q": "",
-            "a": ""
+            "override": "html_wireframe",
+            "q": "Schreiben Sie eine Vue.js Single File Component.",
+            "q_extra": "Die Komponente soll mit einem Text-Eingabefeld und 3 Ausgabefeldern, in denen man während des Tippens sehen kann, (a) wie viele Buchstaben (b) wie viele Leerzeichen und (c) wie viele Worte man in das Text-Eingabefeld bereits eingegeben hat, ausgestattet sein.\n\nBetten Sie Ihre Komponente in eine Webseite zweimal ein und testen Sie, ob beide Komponenten unabhängig voneinander sind.",
+            "a": "<template>\n  <div id=\"app\">\n    <input v-model=\"message\">\n    <p>Message has {{ message.length}} characters ({{ message.split(\" \").length - 1}} are whitespaces)</p>\n    <p>Message has {{ message.split(\" \").filter(x => x != \"\").length}} words</p>\n  </div>\n</template>\n\n<script>\nexport default {\n  name: \"eingabe.vue\",\n  data: function () {\n    return {\n      message: \"edit me\"\n    }\n  }\n}\n\n\n</script>\n\n<style scoped>\np {\n  color: black;\n}\n</style>",
+            "path": ""
+          },
+          {
+            "override": "html_wireframe",
+            "a": "<template>\n  <div id=\"app\">\n    <eingabe/>\n    <eingabe/>\n  </div>\n</template>\n\n<script>\nimport eingabe from \"@/components/eingabe\";\n\nexport default {\n  name: 'App',\n  components: {\n    eingabe\n  }\n}\n</script>\n\n<style>\n#app {\n  font-family: Avenir, Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #2c3e50;\n  margin-top: 60px;\n}\n</style>\n",
+            "path": ""
           }
         ]
       },
       {
-        "task": "",
-        "txt": "",
+        "task": "Aufgabe 2",
+        "txt": "Menü-Komponente",
         "subtasks": [
           {
-            "q": "",
-            "a": ""
-          }
-        ]
-      },
-      {
-        "task": "",
-        "txt": "",
-        "subtasks": [
-          {
-            "q": "",
-            "a": ""
-          }
-        ]
-      },
-      {
-        "task": "",
-        "txt": "",
-        "subtasks": [
-          {
-            "q": "",
-            "a": ""
+            "override": "html_wireframe",
+            "q": "Schreiben Sie eine möglichst flexible Vue.js Single File Component für Menüs.",
+            "q_extra": "wenden Sie diese in derselben Webseite zweimal an, einmal horizontal, das andere Mal vertikal.",
+            "a": "App.vue\n<template>\n  <div id=\"app\">\n    <h2> Menu horizontal</h2>\n    <Menu v-bind:elements=\"['Menu1', 'Menu2', 'Menu3', 'Menu4']\" direction=\"row\"/>\n\n    <br>\n    <h2> Menu vertical </h2>\n    <Menu v-bind:elements=\"['Menu1', 'Menu2', 'Menu3', 'Menu4']\" direction=\"column\"/>\n  </div>\n</template>\n\n<script>\nimport Menu from \"./components/Menu\";\n\nexport default {\n  name: 'App',\n  components: {\n    Menu\n  }\n}\n</script>\n\n<style>\n#app {\n  font-family: Avenir, Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  color: #2c3e50;\n  margin-top: 60px;\n}\n</style>\n\n\nMenu.vue\n<template>\n  <div class=\"menu\" :style=\"cssVars\">\n    <button type=\"button\" class=\"button\" v-for=\"item in elements\" :key=\"item.id\"> {{ item }}</button>\n  </div>\n</template>\n\n<script>\nexport default {\n  name: \"Menu\",\n  props: {\n    elements: Array,\n    direction: String\n  },\n  computed: {\n    cssVars() {\n      return {\n        '--dir': this.direction,\n      }\n    }\n  }\n}\n</script>\n\n<style scoped>\n\n.menu {\n  display: flex;\n  flex-direction: var(--dir);\n}\n\n.button {\n  background-color: #646464;\n  border: none;\n  color: white;\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: block;\n  font-size: 16px;\n  height: 100%;\n  width: 200px;\n}\n\n.button:hover {\n  background-color: #7c7c7c;\n}\n\n</style>",
+            "path": ""
           }
         ]
       }
@@ -525,7 +516,7 @@
   },
   {
     "exercise": "Übung 10",
-    "heading": "JavaScript",
+    "heading": "PHP",
     "tasks": [
       {
         "task": "",
@@ -570,4 +561,3 @@
     ]
   }
 ]
-
