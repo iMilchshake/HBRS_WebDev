@@ -7,18 +7,10 @@ import About2 from "../views/site/about_wrapper/about2/About2";
 import Navigator_wrapper from "../views/site/navigator_wrapper/Navigator_wrapper";
 import Site from "../views/site/Site";
 import NotFound from "../views/NotFound/NotFound";
+import a1 from "../views/site/navigator_wrapper/u9/a1";
+import a2 from "../views/site/navigator_wrapper/u9/a2";
 
 const routes = [
-    {
-        path: '/',
-        name: 'Welcome',
-        component: Welcome
-    },
-    {
-        path: "/:catchAll(.*)",
-        name: 'NotFoundError',
-        component: NotFound
-    },
     {
         path: '/site',
         name: 'Site',
@@ -51,6 +43,27 @@ const routes = [
                 component: Navigator_wrapper,
                 children: []
             }]
+
+    },
+    {
+        path: '/solutions/u9/a1',
+        name: 'u9/a1',
+        component: a1
+    },
+    {
+        path: '/solutions/u9/a2',
+        name: 'u9/a2',
+        component: a2
+    },
+    {
+        path: '/',
+        name: 'Welcome',
+        component: Welcome
+    },
+    {
+        path: "/:catchAll(.*)",
+        name: 'NotFoundError',
+        component: NotFound
     }
 ]
 

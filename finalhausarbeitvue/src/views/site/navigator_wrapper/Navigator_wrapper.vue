@@ -55,7 +55,8 @@
             </div>
 
             <!-- link to solution -->
-            <a target="_blank" rel="noopener noreferrer" :href="subtask.path"> Link to Solution! </a>
+            <a v-if="subtask.path !== undefined" target="_blank" rel="noopener noreferrer" :href="subtask.path"> Link to Solution! </a>
+            <router-link v-if="subtask.route !== undefined" :to="subtask.route"> Link to Solution! </router-link>
           </div>
         </div>
       </div>
