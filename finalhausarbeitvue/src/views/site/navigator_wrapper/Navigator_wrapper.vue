@@ -3,11 +3,11 @@
     <!-- nav-bar -->
     <div class="nav_navigator">
       <div class="topic_group" v-for="exercise in getData" v-bind:key="exercise">
-        <router-link to="" @click="topicChange(exercise.exercise)"> {{ exercise.exercise }}</router-link>
+        <a @click="topicChange(exercise.exercise)"> {{ exercise.exercise }}</a>
         <div class="subtopic_group" v-if="exercise.exercise === getTopic">
-          <router-link to="" @click="subTopicChange(task.task)" v-for="task in exercise.tasks" v-bind:key="task">
+          <a @click="subTopicChange(task.task)" v-for="task in exercise.tasks" v-bind:key="task">
             {{ task.task }}
-          </router-link>
+          </a>
         </div>
       </div>
     </div>
@@ -19,13 +19,6 @@
       <div class="QA" v-if="getSubTopic !== ''">
         <h2> {{ getTaskData.task }} - {{ getTaskData.txt }} </h2>
         <div class="QA_section" v-for="subtask in getTaskData.subtasks" v-bind:key="subtask">
-          <!--          <div v-if="subtask.override === undefined">-->
-          <!--            <h3> {{ subtask.q }} </h3>-->
-          <!--            <div class="codeblock">-->
-          <!--              <code> {{ subtask.a }}</code>-->
-          <!--            </div>-->
-          <!--          </div>-->
-          <!--          <div> v-else-if="subtask.override === 'html_wireframe'">-->
 
           <!-- question heading -->
           <h3> {{ subtask.q }} </h3>
@@ -61,7 +54,6 @@
       </div>
     </div>
   </div>
-  <!--  </div>-->
 </template>
 
 <script>
@@ -70,7 +62,7 @@ export default {
   name: "Navigator_wrapper",
   data: function () {
     return {
-      current_src: ""
+      current_src: ""  // dynamically fetched src-code will be saved here
     }
   },
   methods: {
@@ -149,19 +141,36 @@ export default {
   flex-direction: column;
   background: gray;
   width: 105px;
-}
-
-.subtopic_group {
-  padding-left: 1em;
-  display: flex;
-  flex-direction: column;
-  background: lightgrey;
+  cursor: pointer;
+  user-select:none;
 }
 
 .topic_group {
   display: flex;
   flex-direction: column;
   background: gray;
+}
+
+.subtopic_group {
+  display: flex;
+  flex-direction: column;
+  background: lightgrey;
+}
+
+.topic_group a {
+  padding-left: 0.5em;
+}
+
+.subtopic_group a {
+  padding-left: 1em;
+}
+
+.topic_group a:hover {
+  background: #696969;
+}
+
+.subtopic_group a:hover {
+  background: #e0e0e0;
 }
 
 a {

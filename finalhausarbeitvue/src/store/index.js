@@ -8,7 +8,11 @@ export default createStore({
     },
     mutations: {
         changeTopic(state, t) {
-            state.topic = t;
+            if(state.topic !== t) {
+                state.topic = t;
+            } else {
+                state.topic = "";
+            }
         },
         changeSubTopic(state, st) {
             state.subtopic = st;
