@@ -518,42 +518,26 @@
     "heading": "PHP",
     "tasks": [
       {
-        "task": "",
-        "txt": "",
+        "task": "Aufgabe 1",
+        "txt": "Registrierung mit PHP",
         "subtasks": [
           {
-            "q": "",
-            "a": ""
+            "override": "html_wireframe",
+            "q": "Erstellen Sie mit PHP 5 auf www2.inf.h-brs.de ein Registrierungsformular.",
+            "q_extra": "Speichern Sie die eingegebenen Daten persistent in einer Datei auf www2.inf.h-brs.de. Schreiben Sie Ihre PHP-Scripte so, dass es zu keinen Nebenläufigkeitsartefakten (z.B. Lost Update) kommen kann, egal wie viele Nutzer sich gleichzeitig registrieren.",
+            "src": "./solutions/u10/a1.php"
           }
         ]
       },
       {
-        "task": "",
-        "txt": "",
+        "task": "Aufgabe 2",
+        "txt": "Login mit PHP",
         "subtasks": [
           {
-            "q": "",
-            "a": ""
-          }
-        ]
-      },
-      {
-        "task": "",
-        "txt": "",
-        "subtasks": [
-          {
-            "q": "",
-            "a": ""
-          }
-        ]
-      },
-      {
-        "task": "",
-        "txt": "",
-        "subtasks": [
-          {
-            "q": "",
-            "a": ""
+            "override": "html_wireframe",
+            "q": "Schreiben Sie eine sichere PHP-Lösung für Login.",
+            "q_extra": "Der Login soll die persistierten Registrierungsdaten aus der letzten Aufgabe nutzten.",
+            "src": "./solutions/u10/a2.php"
           }
         ]
       }
