@@ -19,49 +19,49 @@
       <div class="QA" v-if="getSubTopic !== ''">
         <h2> {{ getTaskData.task }} - {{ getTaskData.txt }} </h2>
         <div class="QA_section" v-for="subtask in getTaskData.subtasks" v-bind:key="subtask">
-          <div v-if="subtask.override === undefined">
-            <h3> {{ subtask.q }} </h3>
-            <div class="codeblock">
-              <code> {{ subtask.a }}</code>
-            </div>
-          </div>
-          <div v-else-if="subtask.override === 'html_wireframe'">
-            <!-- question heading -->
-            <h3> {{ subtask.q }} </h3>
-            <p v-if="subtask.q_extra !== undefined"> {{ subtask.q_extra }}</p>
+          <!--          <div v-if="subtask.override === undefined">-->
+          <!--            <h3> {{ subtask.q }} </h3>-->
+          <!--            <div class="codeblock">-->
+          <!--              <code> {{ subtask.a }}</code>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          <div> v-else-if="subtask.override === 'html_wireframe'">-->
 
+          <!-- question heading -->
+          <h3> {{ subtask.q }} </h3>
+          <p v-if="subtask.q_extra !== undefined"> {{ subtask.q_extra }}</p>
+
+          <!-- image -->
+          <div v-if="subtask.wireframe !== undefined">
+            <img :src="subtask.wireframe">
             <br>
-
-            <!-- image -->
-            <div v-if="subtask.wireframe !== undefined">
-              <img :src="subtask.wireframe">
-              <br>
-            </div>
-
-            <!-- link to video-image -->
-            <div v-if="subtask.video_link !== undefined">
-              <a target="_blank" rel="noopener noreferrer" :href=subtask.video_link> Link to Video! </a>
-              <br>
-            </div>
-
-            <!-- answer-block -->
-            <div v-if="subtask.a !== undefined" class="codeblock">
-              <code> {{ subtask.a }}</code>
-            </div>
-
-            <!-- source-code block (only one subtask!) -->
-            <div v-if="subtask.src !== undefined" class="codeblock">
-              <code> {{ current_src }}</code>
-            </div>
-
-            <!-- link to solution -->
-            <a v-if="subtask.path !== undefined" target="_blank" rel="noopener noreferrer" :href="subtask.path"> Link to Solution! </a>
-            <router-link v-if="subtask.route !== undefined" :to="subtask.route"> Link to Solution! </router-link>
           </div>
+
+          <!-- link to video-image -->
+          <div v-if="subtask.video_link !== undefined">
+            <a target="_blank" rel="noopener noreferrer" :href=subtask.video_link> Link to Video! </a>
+            <br>
+          </div>
+
+          <!-- answer-block -->
+          <div v-if="subtask.a !== undefined" class="codeblock">
+            <code> {{ subtask.a }}</code>
+          </div>
+
+          <!-- source-code block (only one subtask!) -->
+          <div v-if="subtask.src !== undefined" class="codeblock">
+            <code> {{ current_src }}</code>
+          </div>
+
+          <!-- link to solution -->
+          <a v-if="subtask.path !== undefined" target="_blank" rel="noopener noreferrer" :href="subtask.path"> Link to
+            Solution! </a>
+          <router-link v-if="subtask.route !== undefined" :to="subtask.route"> Link to Solution!</router-link>
         </div>
       </div>
     </div>
   </div>
+  <!--  </div>-->
 </template>
 
 <script>
