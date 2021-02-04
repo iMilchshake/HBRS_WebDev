@@ -1,4 +1,0 @@
-me Text
-upposed to be concatenated
-t work tho?
-asdasd
