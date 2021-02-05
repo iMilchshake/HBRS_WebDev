@@ -12,7 +12,7 @@ let promise = initializeEditor();
 // fetch json data from server and display editor
 async function initializeEditor() {
     const json = await fetch('file.json').then(x => x.json());
-    console.log("received data:", json);
+    console.log("fetched data:", json);
 
     json.forEach(uebung => {
         addOptionToSelect(uebung['exercise'], "select_uebung")
@@ -22,25 +22,8 @@ async function initializeEditor() {
     select_uebung.addEventListener("change", id => updateSelects('select_uebung', json));
     select_aufgabe.addEventListener("change", id => updateSelects('select_aufgabe', json));
     select_unteraufgabe.addEventListener("change", id => updateSelects('select_unteraufgabe', json));
-
-    document.getElementById('send_button').addEventListener("click", function () {
-        sendData(json);
-    })
-}
-
-function sendData(data) {
-    let xhr = new XMLHttpRequest();
-    const url = "/test.php";
-    const jsonData = JSON.stringify(data);
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            let jsonResponse = JSON.parse(xhr.responseText);
-            console.log(jsonResponse);
-        }
-    };
-    xhr.send(jsonData);
+    document.getElementById('send_button').addEventListener("click", x => sendData(json));
+    document.getElementById('button_adduebung').addEventListener("click", x => addNewEntity("uebung", json));
 }
 
 function addOptionToSelect(option_name, select_id) {
@@ -58,6 +41,23 @@ function getCurrentSelection(select) {
     return select.options[select.selectedIndex].value;
 }
 
+function addNewEntity(type, json) {
+    switch (type) {
+        case "uebung":
+            const name = prompt("Name der Übung?", "Übung X");
+            json.push({exercise: name, heading: "", tasks: []})
+            console.log(json);
+            select_uebung.selectedIndex = select_uebung.childElementCount - 1;
+
+            removeAllOptions(select_uebung);
+            json.forEach(uebung => {
+                addOptionToSelect(uebung['exercise'], "select_uebung")
+            });
+
+            updateSelects('select_uebung', json);
+    }
+}
+
 function updateUebungsDisplay() {
     document.getElementById('edit_heading').value = uebung_data.heading;
 }
@@ -68,11 +68,11 @@ function updateAufgabenDisplay() {
 
 function updateUnteraufgabenDisplay() {
     document.getElementById('edit_q').value = unteraufgaben_data.q;
-    if(unteraufgaben_data['q_extra']) document.getElementById('edit_q_extra').value = unteraufgaben_data.q_extra;
-    if(unteraufgaben_data['a']) document.getElementById('edit_a').value = unteraufgaben_data.a;
-    if(unteraufgaben_data['src']) document.getElementById('edit_src').value = unteraufgaben_data.src;
-    if(unteraufgaben_data['path']) document.getElementById('edit_path').value = unteraufgaben_data.path;
-    if(unteraufgaben_data['route']) document.getElementById('edit_route').value = unteraufgaben_data.route;
+    if (unteraufgaben_data['q_extra']) document.getElementById('edit_q_extra').value = unteraufgaben_data.q_extra;
+    if (unteraufgaben_data['a']) document.getElementById('edit_a').value = unteraufgaben_data.a;
+    if (unteraufgaben_data['src']) document.getElementById('edit_src').value = unteraufgaben_data.src;
+    if (unteraufgaben_data['path']) document.getElementById('edit_path').value = unteraufgaben_data.path;
+    if (unteraufgaben_data['route']) document.getElementById('edit_route').value = unteraufgaben_data.route;
 }
 
 function updateSelects(select_id, json) {
@@ -113,5 +113,20 @@ function updateSelects(select_id, json) {
             // update display_unteraufgaben
             updateUnteraufgabenDisplay();
     }
-    console.log(uebung_data, aufgaben_data, unteraufgaben_data);
+    //console.log(uebung_data, aufgaben_data, unteraufgaben_data);
+}
+
+function sendData(data) {
+    let xhr = new XMLHttpRequest();
+    const url = "/test.php";
+    const jsonData = JSON.stringify(data);
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            let jsonResponse = JSON.parse(xhr.responseText);
+            console.log(jsonResponse);
+        }
+    };
+    xhr.send(jsonData);
 }
