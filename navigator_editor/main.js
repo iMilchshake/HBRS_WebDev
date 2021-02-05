@@ -21,6 +21,7 @@ async function initializeEditor() {
     // add event handlers for UI
     select_uebung.addEventListener("change", id => updateSelects('select_uebung', json));
     select_aufgabe.addEventListener("change", id => updateSelects('select_aufgabe', json));
+    select_unteraufgabe.addEventListener("change", id => updateSelects('select_unteraufgabe', json));
 
     document.getElementById('send_button').addEventListener("click", function () {
         sendData(json);
@@ -53,6 +54,10 @@ function removeAllOptions(select) {
     while (select.firstChild) select.removeChild(select.lastChild);
 }
 
+function getCurrentSelection(select) {
+    return select.options[select.selectedIndex].value;
+}
+
 function updateUebungsDisplay() {
     document.getElementById('edit_heading').value = uebung_data.heading;
 }
@@ -61,36 +66,52 @@ function updateAufgabenDisplay() {
     document.getElementById('edit_txt').value = aufgaben_data.txt;
 }
 
+function updateUnteraufgabenDisplay() {
+    document.getElementById('edit_q').value = unteraufgaben_data.q;
+    if(unteraufgaben_data['q_extra']) document.getElementById('edit_q_extra').value = unteraufgaben_data.q_extra;
+    if(unteraufgaben_data['a']) document.getElementById('edit_a').value = unteraufgaben_data.a;
+    if(unteraufgaben_data['src']) document.getElementById('edit_src').value = unteraufgaben_data.src;
+    if(unteraufgaben_data['path']) document.getElementById('edit_path').value = unteraufgaben_data.path;
+    if(unteraufgaben_data['route']) document.getElementById('edit_route').value = unteraufgaben_data.route;
+}
+
 function updateSelects(select_id, json) {
-    if (select_id === 'select_uebung') {
-        // get selection
-        const uebung = select_uebung.options[select_uebung.selectedIndex].value;
+    switch (select_id) {
+        case 'select_uebung':
+            // get selection
+            const uebung = getCurrentSelection(select_uebung);
+            uebung_data = json.find(u => u['exercise'] === uebung);
 
-        // update select_aufgabe
-        uebung_data = json.find(u => u['exercise'] === uebung);
-        removeAllOptions(select_aufgabe);
-        removeAllOptions(select_unteraufgabe);
-        uebung_data['tasks'].forEach(task => {
-            addOptionToSelect(task['task'], 'select_aufgabe');
-        });
+            // update select_aufgabe
+            removeAllOptions(select_aufgabe);
+            uebung_data['tasks'].forEach(task => {
+                addOptionToSelect(task['task'], 'select_aufgabe');
+            });
 
-        // update display_uebung
-        updateUebungsDisplay();
+            // update display_uebung
+            updateUebungsDisplay();
+
+        case 'select_aufgabe':
+            // get selection
+            const aufgabe = getCurrentSelection(select_aufgabe);
+            aufgaben_data = uebung_data['tasks'].find(a => a['task'] === aufgabe);
+
+            // update select_unteraufgabe
+            removeAllOptions(select_unteraufgabe);
+            aufgaben_data['subtasks'].forEach((subtask, i) => {
+                addOptionToSelect(i, 'select_unteraufgabe');
+            });
+
+            // update display_aufgaben
+            updateAufgabenDisplay();
+
+        case 'select_unteraufgabe':
+            // get selection
+            const unteraufgabe = getCurrentSelection(select_unteraufgabe);
+            unteraufgaben_data = aufgaben_data['subtasks'][unteraufgabe]
+
+            // update display_unteraufgaben
+            updateUnteraufgabenDisplay();
     }
-    if (select_id === 'select_aufgabe' || select_id === 'select_uebung') {
-        // get selection
-        const aufgabe = select_aufgabe.options[select_aufgabe.selectedIndex].value;
-
-        // update select_unteraufgabe
-        aufgaben_data = uebung_data['tasks'].find(a => a['task'] === aufgabe);
-        removeAllOptions(select_unteraufgabe);
-        aufgaben_data['subtasks'].forEach((subtask, i) => {
-            addOptionToSelect(i, 'select_unteraufgabe');
-        });
-
-        // update display_aufgaben
-        updateAufgabenDisplay();
-    }
-
     console.log(uebung_data, aufgaben_data, unteraufgaben_data);
 }

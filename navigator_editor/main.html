@@ -14,10 +14,22 @@
         padding: 1em;
     }
 
-    .selector {
+    .selector_row {
         display: flex;
         flex-direction: row;
         gap: 0.25em;
+        margin-bottom: 0.5em;
+    }
+
+    .display_row {
+        display: flex;
+        flex-direction: row;
+        gap: 0.25em;
+        margin-bottom: 1em;
+    }
+
+    .display_row label {
+        width: 150px;
     }
 
     select {
@@ -26,49 +38,83 @@
     }
 
     input[type=text] {
-        width: 300px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    textarea {
+        width: 100%;
     }
 
 </style>
 <body>
 
 
-<div class="selector">
+<div class="selector_row">
     <label for="select_uebung">Übung:</label>
-    <select type="text" id="select_uebung">
+    <select id="select_uebung">
         <option disabled selected value> - Select -</option>
     </select>
 </div>
 
-<div id="display_uebung">
+<div id="display_uebung" class="display_row">
     <label for="edit_heading"> Titel:</label>
     <input type="text" id="edit_heading">
 </div>
 
-<br>
-
-<div class="selector">
+<div class="selector_row">
     <label for="select_aufgabe">Aufgabe:</label>
-    <select type="text" id="select_aufgabe">
+    <select id="select_aufgabe">
         <option disabled selected value> --</option>
     </select>
 </div>
 
-<div id="display_aufgabe">
+<div id="display_aufgabe" class="display_row">
     <label for="edit_txt"> Titel:</label>
     <input type="text" id="edit_txt">
 </div>
 
-<br>
-
-<div class="selector">
+<div class="selector_row">
     <label for="select_unteraufgabe">Unteraufgabe:</label>
-    <select type="text" id="select_unteraufgabe">
+    <select id="select_unteraufgabe">
         <option disabled selected value> --</option>
     </select>
 </div>
 
+<hr>
 <br>
+
+<div class="display_row">
+    <label for="edit_q"> Aufgabenstellung:</label>
+    <textarea rows="3" id="edit_q"> </textarea>
+</div>
+
+<div class="display_row">
+    <label for="edit_q_extra"> Erweitert: </label>
+    <textarea rows="3" id="edit_q_extra"> </textarea>
+</div>
+
+<div class="display_row">
+    <label for="edit_a"> Antwort: </label>
+    <textarea rows="3" id="edit_a"> </textarea>
+</div>
+
+
+<div class="display_row">
+    <label for="edit_src"> Code-Pfad:</label>
+    <input type="text" id="edit_src">
+</div>
+
+<div class="display_row">
+    <label for="edit_path"> Pfad:</label>
+    <input type="text" id="edit_path">
+</div>
+
+<div class="display_row">
+    <label for="edit_route"> Route:</label>
+    <input type="text" id="edit_route">
+</div>
+
 <input type="button" value="send" id="send_button">
 
 
