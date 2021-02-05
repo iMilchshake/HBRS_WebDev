@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: 'Dosis', sans-serif;
+        border: 1px solid black;
+        border-radius: 3px;
+        padding: 1em;
+    }
+
+    .selector {
+        display: flex;
+        flex-direction: row;
+        gap: 0.25em;
+    }
+
+    select {
+        height: auto;
+        max-width: 400px;
+    }
+
+    input[type=text] {
+        width: 300px;
+    }
+
+</style>
+<body>
+
+
+<div class="selector">
+    <label for="select_uebung">Übung:</label>
+    <select type="text" id="select_uebung">
+        <option disabled selected value> - Select -</option>
+    </select>
+</div>
+
+<div id="display_uebung">
+    <label for="edit_heading"> Titel:</label>
+    <input type="text" id="edit_heading">
+</div>
+
+<br>
+
+<div class="selector">
+    <label for="select_aufgabe">Aufgabe:</label>
+    <select type="text" id="select_aufgabe">
+        <option disabled selected value> --</option>
+    </select>
+</div>
+
+<div id="display_aufgabe">
+    <label for="edit_txt"> Titel:</label>
+    <input type="text" id="edit_txt">
+</div>
+
+<br>
+
+<div class="selector">
+    <label for="select_unteraufgabe">Unteraufgabe:</label>
+    <select type="text" id="select_unteraufgabe">
+        <option disabled selected value> --</option>
+    </select>
+</div>
+
+<br>
+<input type="button" value="send" id="send_button">
+
+
+</body>
+</html>
+
+<script src="main.js" type="application/javascript"></script>
