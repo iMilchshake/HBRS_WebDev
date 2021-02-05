@@ -76,7 +76,6 @@ function addNewEntity(type) {
             const u = prompt("Name der Übung?", "Übung X");
             json.push({exercise: u, heading: "", tasks: []})
             createAufgabenOptions();
-            uebung_data = undefined, aufgaben_data = undefined, unteraufgaben_data = undefined;
             select_uebung.selectedIndex = select_uebung.childElementCount - 1;
             updateSelects('select_uebung');
             console.log(uebung_data, aufgaben_data, unteraufgaben_data)
@@ -84,11 +83,9 @@ function addNewEntity(type) {
         case "aufgabe":
             const a = prompt("Name der Aufgabe?", "Aufgabe x");
             uebung_data.tasks.push({task: a, txt: "", subtasks: []});
-            uebung_data = undefined, aufgaben_data = undefined, unteraufgaben_data = undefined;
             console.log("bla1", json);
             updateSelects('select_uebung');
             break;
-
     }
 }
 
@@ -117,13 +114,10 @@ function updateUnteraufgabenDisplay() {
 }
 
 function updateSelects(select_id) {
-
-
     switch (select_id) {
         case 'select_uebung':
             // get selection
             current_uebung = getCurrentSelection(select_uebung);
-
             uebung_data = json.find(u => u['exercise'] === current_uebung);
 
             // update select_aufgabe
@@ -131,6 +125,7 @@ function updateSelects(select_id) {
             uebung_data['tasks'].forEach(task => {
                 addOptionToSelect(task['task'], 'select_aufgabe');
             });
+
             // update display_uebung
             updateUebungsDisplay();
 
@@ -145,6 +140,8 @@ function updateSelects(select_id) {
                 aufgaben_data['subtasks'].forEach((subtask, i) => {
                     addOptionToSelect(i, 'select_unteraufgabe');
                 });
+            } else {
+                aufgaben_data = undefined;
             }
 
             // update uebung_heading
@@ -162,9 +159,7 @@ function updateSelects(select_id) {
 
             // update aufgabe_txt
             updateUnteraufgabenDisplay();
-
     }
-    //console.log(uebung_data, aufgaben_data, unteraufgaben_data);
 }
 
 function sendData(data) {
