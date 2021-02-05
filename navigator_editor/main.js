@@ -17,10 +17,7 @@ let promise = initializeEditor();
 async function initializeEditor() {
     json = await fetch('file.json').then(x => x.json());
     console.log("fetched data:", json);
-
-    json.forEach(uebung => {
-        addOptionToSelect(uebung['exercise'], "select_uebung")
-    });
+    createAufgabenOptions();
 
     // add event handlers for UI
     select_uebung.addEventListener("change", id => updateSelects('select_uebung'));
@@ -28,6 +25,31 @@ async function initializeEditor() {
     select_unteraufgabe.addEventListener("change", id => updateSelects('select_unteraufgabe'));
     document.getElementById('send_button').addEventListener("click", x => sendData());
     document.getElementById('button_adduebung').addEventListener("click", x => addNewEntity("uebung"));
+    document.getElementById('button_addaufgabe').addEventListener("click", x => addNewEntity("aufgabe"));
+    document.getElementById('button_debug').addEventListener("click", x => debug());
+}
+
+function debug() {
+    console.log("DEBUG:");
+    console.log("uebung_data", uebung_data);
+    console.log("aufgaben_data", aufgaben_data);
+    console.log("unteraufgaben_data", unteraufgaben_data);
+    console.log("current_uebung", current_uebung);
+    console.log("current_aufgabe", current_aufgabe);
+    console.log("current_unteraufgabe", current_unteraufgabe);
+    console.log("json", json);
+}
+
+function createAufgabenOptions() {
+    removeAllOptions(select_uebung);
+    removeAllOptions(select_unteraufgabe);
+    removeAllOptions(select_aufgabe);
+
+    json.forEach(uebung => {
+        addOptionToSelect(uebung['exercise'], "select_uebung")
+    });
+
+    updateSelects('select_uebung');
 }
 
 function addOptionToSelect(option_name, select_id) {
@@ -51,27 +73,33 @@ function getCurrentSelection(select) {
 function addNewEntity(type) {
     switch (type) {
         case "uebung":
-            const name = prompt("Name der Übung?", "Übung X");
-            json.push({exercise: name, heading: "", tasks: []})
-            console.log(json);
-
-            removeAllOptions(select_uebung);
-            json.forEach(uebung => {
-                addOptionToSelect(uebung['exercise'], "select_uebung")
-            });
-
+            const u = prompt("Name der Übung?", "Übung X");
+            json.push({exercise: u, heading: "", tasks: []})
+            createAufgabenOptions();
+            uebung_data = undefined, aufgaben_data = undefined, unteraufgaben_data = undefined;
             select_uebung.selectedIndex = select_uebung.childElementCount - 1;
-            updateSelects('select_uebung', json);
+            updateSelects('select_uebung');
+            console.log(uebung_data, aufgaben_data, unteraufgaben_data)
+            break;
+        case "aufgabe":
+            const a = prompt("Name der Aufgabe?", "Aufgabe x");
+            uebung_data.tasks.push({task: a, txt: "", subtasks: []});
+            uebung_data = undefined, aufgaben_data = undefined, unteraufgaben_data = undefined;
+            console.log("bla1", json);
+            updateSelects('select_uebung');
+            break;
 
     }
 }
 
 function updateUebungsDisplay() {
-    document.getElementById('edit_heading').value = uebung_data.heading;
+    const value = uebung_data ? uebung_data.heading : "";
+    document.getElementById('edit_heading').value = value;
 }
 
 function updateAufgabenDisplay() {
-    document.getElementById('edit_txt').value = aufgaben_data.txt;
+    const value = aufgaben_data ? aufgaben_data.txt : "";
+    document.getElementById('edit_txt').value = value;
 }
 
 function updateUnteraufgabenDisplay() {
@@ -80,18 +108,22 @@ function updateUnteraufgabenDisplay() {
 
     dom_ids.forEach((id, i) => {
         const txt = document.getElementById(id);
-        if(unteraufgaben_data[json_ids[i]]) {
+        if (unteraufgaben_data && unteraufgaben_data[json_ids[i]]) {
             txt.value = unteraufgaben_data[json_ids[i]];
         } else {
             txt.value = "";
         }
     })
+}
 
 function updateSelects(select_id) {
+
+
     switch (select_id) {
         case 'select_uebung':
             // get selection
             current_uebung = getCurrentSelection(select_uebung);
+
             uebung_data = json.find(u => u['exercise'] === current_uebung);
 
             // update select_aufgabe
@@ -99,36 +131,38 @@ function updateSelects(select_id) {
             uebung_data['tasks'].forEach(task => {
                 addOptionToSelect(task['task'], 'select_aufgabe');
             });
-
             // update display_uebung
             updateUebungsDisplay();
 
         case 'select_aufgabe':
             // get selection
             current_aufgabe = getCurrentSelection(select_aufgabe);
-
+            removeAllOptions(select_unteraufgabe);
             if (current_aufgabe) {
                 aufgaben_data = uebung_data['tasks'].find(a => a['task'] === current_aufgabe);
 
                 // update select_unteraufgabe
-                removeAllOptions(select_unteraufgabe);
                 aufgaben_data['subtasks'].forEach((subtask, i) => {
                     addOptionToSelect(i, 'select_unteraufgabe');
                 });
-
-                // update display_aufgaben
-                updateAufgabenDisplay();
             }
+
+            // update uebung_heading
+            updateAufgabenDisplay();
+
         case 'select_unteraufgabe':
             // get selection
             current_unteraufgabe = getCurrentSelection(select_unteraufgabe);
 
             if (current_unteraufgabe) {
                 unteraufgaben_data = aufgaben_data['subtasks'][current_unteraufgabe]
-
-                // update display_unteraufgaben
-                updateUnteraufgabenDisplay();
+            } else {
+                unteraufgaben_data = undefined;
             }
+
+            // update aufgabe_txt
+            updateUnteraufgabenDisplay();
+
     }
     //console.log(uebung_data, aufgaben_data, unteraufgaben_data);
 }
