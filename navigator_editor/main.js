@@ -1,4 +1,6 @@
 // get DOM id's
+const dom_ids = ['edit_q', 'edit_q_extra', 'edit_a', 'edit_src', 'edit_path', 'edit_route'];
+const json_ids = ['q', 'q_extra', 'a', 'src', 'path', 'route'];
 const select_uebung = document.getElementById("select_uebung");
 const select_aufgabe = document.getElementById("select_aufgabe");
 const select_unteraufgabe = document.getElementById("select_unteraufgabe");
@@ -26,7 +28,9 @@ async function initializeEditor() {
     document.getElementById('send_button').addEventListener("click", x => sendData());
     document.getElementById('button_adduebung').addEventListener("click", x => addNewEntity("uebung"));
     document.getElementById('button_addaufgabe').addEventListener("click", x => addNewEntity("aufgabe"));
+    document.getElementById('button_addunteraufgabe').addEventListener("click", x => addNewEntity("unteraufgabe"));
     document.getElementById('button_debug').addEventListener("click", x => debug());
+    document.getElementById('button_save').addEventListener("click", x => save());
 }
 
 function debug() {
@@ -74,18 +78,37 @@ function addNewEntity(type) {
     switch (type) {
         case "uebung":
             const u = prompt("Name der Übung?", "Übung X");
-            json.push({exercise: u, heading: "", tasks: []})
-            createAufgabenOptions();
-            select_uebung.selectedIndex = select_uebung.childElementCount - 1;
-            updateSelects('select_uebung');
-            console.log(uebung_data, aufgaben_data, unteraufgaben_data)
+
+            if (u) {
+                json.push({exercise: u, heading: "", tasks: []})
+                createAufgabenOptions();
+                select_uebung.selectedIndex = select_uebung.childElementCount - 1;
+                updateSelects('select_uebung');
+                console.log(uebung_data, aufgaben_data, unteraufgaben_data)
+            }
             break;
         case "aufgabe":
             const a = prompt("Name der Aufgabe?", "Aufgabe x");
-            uebung_data.tasks.push({task: a, txt: "", subtasks: []});
-            console.log("bla1", json);
-            updateSelects('select_uebung');
+            if (a) {
+                // create new aufgabe
+                uebung_data.tasks.push({task: a, txt: "", subtasks: []});
+                updateSelects('select_uebung');
+
+                // switch to new aufgabe
+                select_aufgabe.selectedIndex = select_aufgabe.childElementCount - 1;
+                updateSelects('select_aufgabe');
+            }
             break;
+        case "unteraufgabe":
+            if (confirm("Soll eine neue Unteraufgabe hinzugefügt werden?")) {
+                // create new unteraufgabe
+                aufgaben_data.subtasks.push({});
+                updateSelects('select_aufgabe');
+
+                // switch to new unteraufgabe
+                select_unteraufgabe.selectedIndex = select_unteraufgabe.childElementCount - 1;
+                updateSelects('select_unteraufgabe');
+            }
     }
 }
 
@@ -100,9 +123,6 @@ function updateAufgabenDisplay() {
 }
 
 function updateUnteraufgabenDisplay() {
-    const dom_ids = ['edit_q', 'edit_q_extra', 'edit_a', 'edit_src', 'edit_path', 'edit_route'];
-    const json_ids = ['q', 'q_extra', 'a', 'src', 'path', 'route'];
-
     dom_ids.forEach((id, i) => {
         const txt = document.getElementById(id);
         if (unteraufgaben_data && unteraufgaben_data[json_ids[i]]) {
@@ -111,6 +131,26 @@ function updateUnteraufgabenDisplay() {
             txt.value = "";
         }
     })
+}
+
+function save() {
+    // save exercise information
+    if(uebung_data) {
+        uebung_data['heading'] = document.getElementById('edit_heading').value;
+    }
+
+    // save task information
+    if(aufgaben_data) {
+        aufgaben_data['txt'] = document.getElementById('edit_txt').value;
+    }
+
+    // save subtask information
+    if (unteraufgaben_data) {
+        dom_ids.forEach((id, i) => {
+            const txt = document.getElementById(id).value;
+            unteraufgaben_data[json_ids[i]] = txt;
+        })
+    }
 }
 
 function updateSelects(select_id) {
@@ -162,10 +202,10 @@ function updateSelects(select_id) {
     }
 }
 
-function sendData(data) {
+function sendData() {
     let xhr = new XMLHttpRequest();
     const url = "/test.php";
-    const jsonData = JSON.stringify(data);
+    const jsonData = JSON.stringify(json);
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
