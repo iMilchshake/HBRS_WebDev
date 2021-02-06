@@ -135,12 +135,12 @@ function updateUnteraufgabenDisplay() {
 
 function save() {
     // save exercise information
-    if(uebung_data) {
+    if (uebung_data) {
         uebung_data['heading'] = document.getElementById('edit_heading').value;
     }
 
     // save task information
-    if(aufgaben_data) {
+    if (aufgaben_data) {
         aufgaben_data['txt'] = document.getElementById('edit_txt').value;
     }
 
@@ -148,7 +148,9 @@ function save() {
     if (unteraufgaben_data) {
         dom_ids.forEach((id, i) => {
             const txt = document.getElementById(id).value;
-            unteraufgaben_data[json_ids[i]] = txt;
+            if (txt !== "") {
+                unteraufgaben_data[json_ids[i]] = txt;
+            }
         })
     }
 }
