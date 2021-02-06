@@ -9,5 +9,5 @@
 ## then:
 1. ~~error handling when sending wrong json data~~
 2. ~~resposive css formating (phone support)~~
-3. wrap login around editor
+3. ~~wrap login around editor~~
 4. connect editor to main page
