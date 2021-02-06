@@ -21,7 +21,7 @@ else {
     // send answer and save json
     if ($jsonError === 0) { // success
         $file_content = json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-        file_put_contents("file_new.json", $file_content);
+        file_put_contents("../exercises.json", $file_content);
         echo "{\"status\": \"success\"}";
     } else { // error
         echo "{\"status\": \"error\",

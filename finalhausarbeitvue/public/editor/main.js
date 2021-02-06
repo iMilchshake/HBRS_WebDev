@@ -17,8 +17,8 @@ let promise = initializeEditor();
 
 // fetch json data from server and display editor
 async function initializeEditor() {
-    json = await fetch('file.json').then(x => x.json());
-    console.log("fetched data:", json);
+    json = await fetch('../exercises.json').then(x => x.json());
+    console.log("editor: fetched data", json);
     createAufgabenOptions();
 
     // add event handlers for UI
@@ -212,7 +212,7 @@ function sendData() {
 
     // define request
     let xhr = new XMLHttpRequest();
-    const url = "/test.php";
+    const url = "./test.php";
     const jsonData = JSON.stringify(json);
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");

@@ -6,7 +6,7 @@ document.getElementById("button_login").addEventListener("click", x => {
 function sendData(username, password) {
     // define request
     let xhr = new XMLHttpRequest();
-    const url = "/login.php";
+    const url = "./login.php";
     const jsonData = JSON.stringify({user: username, pass: password});
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -21,7 +21,7 @@ function sendData(username, password) {
             switch(jsonResponse['status']) {
                 case 'success':
                     console.log("response:", jsonResponse);
-                    window.location.href = 'main.html';
+                    window.location.href = './main.html';
                     break;
                 case 'error':
                     console.error("response", jsonResponse);

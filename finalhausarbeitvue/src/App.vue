@@ -5,7 +5,6 @@
 </template>
 
 <script>
-//const jsonData = require("./exercises.json")
 export default {
   name: 'App',
   components: {},
