@@ -5,6 +5,7 @@
     <title>Editor</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 </head>
 <style>
     body {
@@ -14,27 +15,13 @@
         padding: 1em;
     }
 
-    .selector_row {
-        display: flex;
-        flex-direction: row;
-        gap: 0.25em;
-        margin-bottom: 0.5em;
-    }
-
-    .display_row {
-        display: flex;
-        flex-direction: row;
-        gap: 0.25em;
-        margin-bottom: 1em;
-    }
-
     .display_row label {
         width: 150px;
     }
 
     select {
         height: auto;
-        max-width: 400px;
+        width: auto;
     }
 
     input[type=text] {
@@ -46,81 +33,107 @@
         width: 100%;
     }
 
+    .grid {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: auto 1fr;
+        gap: 0.25em 1em;
+    }
+
+    .full_row {
+        grid-column: 1 / span 2;
+    }
+
+    h1 {
+        margin: 0 0 1em;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .grid {
+            grid-template-rows: auto;
+            grid-template-columns: 1fr;
+        }
+
+        .full_row {
+            grid-column: 1 / span 1;
+        }
+
+        input[type=text] {
+            max-width: none;
+        }
+    }
 </style>
 <body>
-
-
-<div class="selector_row">
+<h1> Editor </h1>
+<div class="grid">
     <label for="select_uebung">Übung:</label>
-    <select id="select_uebung">
-        <option disabled selected value> - Select -</option>
-    </select>
-    <input type="button" value="+" id="button_adduebung">
-</div>
+    <div>
+        <select id="select_uebung">
+            <option disabled selected value> - Select -</option>
+        </select>
+        <input type="button" value="+" id="button_adduebung">
+    </div>
 
-<div id="display_uebung" class="display_row">
     <label for="edit_heading"> Titel:</label>
     <input type="text" id="edit_heading">
-</div>
 
-<div class="selector_row">
+    <div class="full_row">
+        <hr>
+    </div>
+
     <label for="select_aufgabe">Aufgabe:</label>
-    <select id="select_aufgabe">
-        <option disabled selected value> --</option>
-    </select>
-    <input type="button" value="+" id="button_addaufgabe">
-</div>
+    <div>
+        <select id="select_aufgabe">
+            <option disabled selected value> --</option>
+        </select>
+        <input type="button" value="+" id="button_addaufgabe">
+    </div>
 
-<div id="display_aufgabe" class="display_row">
     <label for="edit_txt"> Titel:</label>
     <input type="text" id="edit_txt">
-</div>
 
-<div class="selector_row">
+    <div class="full_row">
+        <hr>
+    </div>
+
     <label for="select_unteraufgabe">Unteraufgabe:</label>
-    <select id="select_unteraufgabe">
-        <option disabled selected value> --</option>
-    </select>
-    <input type="button" value="+" id="button_addunteraufgabe">
-</div>
+    <div>
+        <select id="select_unteraufgabe">
+            <option disabled selected value> --</option>
+        </select>
+        <input type="button" value="+" id="button_addunteraufgabe">
+    </div>
 
-<hr>
-<br>
-
-<div class="display_row">
-    <label for="edit_q"> Aufgabenstellung:</label>
+    <label for="edit_q"> Aufgabe:</label>
     <textarea rows="3" id="edit_q"> </textarea>
-</div>
 
-<div class="display_row">
+
     <label for="edit_q_extra"> Erweitert: </label>
     <textarea rows="3" id="edit_q_extra"> </textarea>
-</div>
 
-<div class="display_row">
+
     <label for="edit_a"> Antwort: </label>
     <textarea rows="3" id="edit_a"> </textarea>
-</div>
 
 
-<div class="display_row">
     <label for="edit_src"> Code-Pfad:</label>
     <input type="text" id="edit_src">
-</div>
 
-<div class="display_row">
     <label for="edit_path"> Pfad:</label>
     <input type="text" id="edit_path">
-</div>
 
-<div class="display_row">
     <label for="edit_route"> Route:</label>
     <input type="text" id="edit_route">
-</div>
 
-<input type="button" value="send" id="send_button">
-<input type="button" value="debug" id="button_debug">
-<input type="button" value="save" id="button_save">
+    <div class="full_row">
+        <hr>
+    </div>
+
+    <div class="full_row">
+        <input type="button" value="Export" id="button_export">
+        <input type="button" value="Debug" id="button_debug">
+    </div>
+</div>
 
 </body>
 </html>

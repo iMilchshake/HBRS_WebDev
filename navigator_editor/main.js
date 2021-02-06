@@ -25,12 +25,11 @@ async function initializeEditor() {
     select_uebung.addEventListener("change", id => updateSelects('select_uebung'));
     select_aufgabe.addEventListener("change", id => updateSelects('select_aufgabe'));
     select_unteraufgabe.addEventListener("change", id => updateSelects('select_unteraufgabe'));
-    document.getElementById('send_button').addEventListener("click", x => sendData());
     document.getElementById('button_adduebung').addEventListener("click", x => addNewEntity("uebung"));
     document.getElementById('button_addaufgabe').addEventListener("click", x => addNewEntity("aufgabe"));
     document.getElementById('button_addunteraufgabe').addEventListener("click", x => addNewEntity("unteraufgabe"));
     document.getElementById('button_debug').addEventListener("click", x => debug());
-    document.getElementById('button_save').addEventListener("click", x => save());
+    document.getElementById('button_export').addEventListener("click", x => sendData());
 }
 
 function debug() {
@@ -156,6 +155,9 @@ function save() {
 }
 
 function updateSelects(select_id) {
+    // save current data before UI changes
+    save();
+
     switch (select_id) {
         case 'select_uebung':
             // get selection
@@ -205,6 +207,8 @@ function updateSelects(select_id) {
 }
 
 function sendData() {
+    // save data before sending
+    save();
 
     // define request
     let xhr = new XMLHttpRequest();
