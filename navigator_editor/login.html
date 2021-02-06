@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Login </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <style>
+        body {
+            font-family: 'Dosis', sans-serif;
+            margin: 0;
+        }
+
+        .login {
+            border: 1px solid black;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 0.5em 1em;
+        }
+
+        .welcome_button {
+            background-color: rgba(0, 0, 0, 1);
+            border: none;
+            outline: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .bg {
+            background-image: url("code_blurred.jpg");
+            width: 100%;
+            min-height: 100vh;
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-sizing: border-box;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .caption {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        p {
+            margin: 0.25em 0;
+        }
+    </style>
+</head>
+<body>
+<div id="welcome" class="bg">
+    <div class="center">
+        <div class="caption">
+            <h1> Please login </h1>
+
+            <div class="login">
+                <p>Username: </p>
+                <input id="user" size="12"/>
+                <p> Password: </p>
+                <input id="pass" type="password" size="12"/>
+                <br><br>
+                <input type="button"id="button_login" value="login"/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="application/javascript" src="login.js"></script>
+</html>
