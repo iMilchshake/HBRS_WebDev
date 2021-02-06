@@ -205,16 +205,33 @@ function updateSelects(select_id) {
 }
 
 function sendData() {
+
+    // define request
     let xhr = new XMLHttpRequest();
     const url = "/test.php";
     const jsonData = JSON.stringify(json);
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
+
+    // define response
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
+            // parse response to json
             let jsonResponse = JSON.parse(xhr.responseText);
-            console.log(jsonResponse);
+
+            // display response to user
+            switch(jsonResponse['status']) {
+                case 'success':
+                    console.log("response:", jsonResponse);
+                    break;
+                case 'error':
+                    console.error("response", jsonResponse);
+                    alert("There has been an error while sending the data. Check the console.")
+                    break;
+            }
         }
     };
+
+    // send request
     xhr.send(jsonData);
 }
