@@ -31,7 +31,7 @@ async function initializeEditor() {
     document.getElementById('button_debug').addEventListener("click", x => debug());
     document.getElementById('button_export').addEventListener("click", x => sendData());
     document.getElementById('button_return').addEventListener("click", x => {
-        window.location.href = "/#/site/navigator/";
+        window.location.href = "../#/site/navigator/";
     })
 }
 

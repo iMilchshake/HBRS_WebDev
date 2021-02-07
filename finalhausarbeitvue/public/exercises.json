@@ -35,15 +35,15 @@
           },
           {
             "q": "Sie bekommen im Browser den HTTP Status Code 400. Was hat das zu bedeuten? Was können Sie dagegen tun?",
-            "a": "4XX Status Codes signalisieren einen Fehler auf der Seite des Clients: Status Code 400 bedeutet, dass die vom Clienten gesendete HTTP-Anfrage syntaktisch fehlerhaft ist."
+            "a": "4XX Status Codes signalisieren einen Fehler auf der Seite des Clients: Status Code 400 bedeutet, dass die vom Clienten gesendete HTTP-Anfrage syntaktisch fehlerhaft ist. Der User sollte seine Anfrage überprüfen und den Cache leeren."
           },
           {
             "q": "Sie bekommen im Browser den HTTP Status Code 403. Was hat das zu bedeuten? Was können Sie dagegen tun?",
-            "a": "Status Code 403 bedeutet, dass die Anfrage des Clienten nicht ausgeführt wurde, weil dieser nicht über die benötigten Rechte verfügt."
+            "a": "Status Code 403 bedeutet, dass die Anfrage des Clienten nicht ausgeführt wurde, weil dieser nicht über die benötigten Rechte verfügt. Hier sollte man überprüfen, dass man sich erfolgreich authentifiziert hat.  "
           },
           {
             "q": "In einer Webanwendung benötigen Sie eine OPTIONS-Anfrage, die die Optionen des Servers vor dem eigentlichen Zugriff erfragen soll. Aus Performanzgründen soll die Abfrage jedoch cacheable sein. Wie könnten Sie dafür eine Lösung angehen?",
-            "a": "Laut der Vorlesung ist eine OPTIONS-Anfrage nicht cashable?"
+            "a": "OPTIONS-Anfragen sind nicht cashable. Alternativ kann man einen Get-Request verwenden und diesen cachen."
           }
         ]
       },
@@ -100,12 +100,14 @@
         "txt": "CSS Selektoren und CSS Farben",
         "subtasks": [
           {
-            "q": "Berechnen Sie die Spezifität folgender CSS-Selektoren:\n\n1) div div div:focus  .inner\n2) h1 + div.main\n3) div a:link[href*='h-brs']\n4) nav > a:hover::before\n5) ul#primary-nav  li.active",
-            "a": "1) 023\n2) 012\n3) 022\n4) 013\n5) 112"
+            "q": "Berechnen Sie die Spezifität folgender CSS-Selektoren:",
+            "a": "1) 023\n2) 012\n3) 022\n4) 013\n5) 112",
+            "q_extra": "1) div div div:focus  .inner\n2) h1 + div.main\n3) div a:link[href*='h-brs']\n4) nav > a:hover::before\n5) ul#primary-nav  li.active"
           },
           {
-            "q": "Rechnen Sie folgende RGB-Werte in HSL-Werte um:\n\n1) #ffffff\n2) #000\n3) #ab0978\n4) rgb(127,255,33)\n5) rgba(255,127,33,0.8)",
-            "a": "1) hsl(0,0,100%)\n2) hsl(0,0,0%)\n3) hsl(319, 90, 35%)\n4) hsl(95,100,56.5%)\n5) hsl(25, 100, 56%)"
+            "q": "Rechnen Sie folgende RGB-Werte in HSL-Werte um:",
+            "a": "1) hsl(0,0,100%)\n2) hsl(0,0,0%)\n3) hsl(319, 90, 35%)\n4) hsl(95,100,56.5%)\n5) hsl(25, 100, 56%)",
+            "q_extra": "1) #ffffff\n2) #000\n3) #ab0978\n4) rgb(127,255,33)\n5) rgba(255,127,33,0.8)"
           }
         ]
       },
@@ -204,11 +206,11 @@
             "a": "    function add(x, y) {\n        return x+y;\n    }\n    function mul(x, y) {\n        return x*y;\n    }"
           },
           {
-            "q": "Schreiben Sie eine Addier-Funktion addf(), so dass addf(x)(y) genau x + y zurück gibt. (Es haben also zwei Funktionsaufrufe zu erfolgen. addf(x) liefert eine Funktion, die auf y angewandt wird.)",
+            "q": "Schreiben Sie eine Addier-Funktion addf(), so dass addf(x)(y) genau x + y zurück gibt.",
             "a": "    function addf(x) {\n        return function(y) {\n            return x + y;\n        }\n    }"
           },
           {
-            "q": "Schreiben Sie eine Funktion applyf(), die aus einer binären Funktion wie add(x,y) eine Funktion addfberechnet, die mit zwei Aufrufen das gleiche Ergebnis liefert, z.B. addf = applyf(add); addf(x)(y) soll add(x,y) liefern. Entsprechend applyf(mul)(5)(6) soll 30 liefern, wenn mul die binäre Multiplikation ist.",
+            "q": "Schreiben Sie eine Funktion applyf(), die aus einer binären Funktion wie add(x,y) eine Funktion addfberechnet, die mit zwei Aufrufen das gleiche Ergebnis liefert",
             "a": "    function applyf(func) {\n        return function(x) {\n            return function (y) {\n                return func(x, y);\n            }\n        }\n    }"
           }
         ]
@@ -219,7 +221,8 @@
         "subtasks": [
           {
             "q": "Schreiben Sie die Prototypen Person und Auto in JavaScript, so dass jede Person weiß, welche Autos sie besitzt. Schreiben Sie eine Funktion conflict(), die feststellt, ob ein Auto von mehr als einer Person besessen wird.",
-            "a": "<script>\n\n    var persons = []\n\n    // Person prototype\n    function Person(n) {\n        let person = {\n            name: n,\n            cars: []\n        };\n\n        person.addCar = function(car) {\n            person.cars.push(car);\n        };\n\n        persons.push(person);\n        return person;\n    }\n\n    // Auto prototype\n    function Car(nr) {\n        let car = {\n            nr: nr\n        };\n\n        return car;\n    }\n\n    // conflict method\n    function conflict(car) {\n        let found_cars = [];\n        let conflict = false;\n        persons.forEach(function(p){  // for each person\n            p.cars.forEach(function(c){  // for each car\n                    if(found_cars.includes(c))\n                        conflict = true;  //conflict found!\n                    else\n                        found_cars.push(c);\n                }\n            );\n        });\n        return conflict;\n    }\n\n    // declare\n    const pers1 = new Person(\"Rudolf\");\n    const pers2 = new Person(\"Kevin\");\n    const car1 = new Car(123);\n    const car2 = new Car(567);\n\n    // add cars to persons\n    pers1.addCar(car1);\n    pers2.addCar(car2);\n\n    // debug\n    console.log(\"persons now have cars: \", pers1, pers2);\n    console.log(\"persons should be listed in persons: \", persons);\n    console.log(\"conflict found?\", conflict(car1));\n\n    // create a conflict\n    pers2.addCar(car1);\n\n    // debug (conflict)\n    console.log(\"conflict found?\", conflict(car1));\n\n</script>"
+            "src": "./solutions/u4/a2.html",
+            "path": "./solutions/u4/a2.html"
           }
         ]
       },
@@ -229,7 +232,8 @@
         "subtasks": [
           {
             "q": "Schreiben Sie im Browser die Fibonacci-Funktion in JavaScript und geben Sie die ersten 2000 Fibonacci-Zahlen 0,1,1,2,3,5,8,13,... auf der Konsole mit console.log() aus.\n\nAchten Sie auf Performanz: Berechnen Sie jeden Fibonacci-Wert nur einmal. Speichern Sie zu diesem Zweck jede bereits berechnete Fibonacci-Zahl in einer Tabelle.",
-            "a": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Übung 4 - Aufgabe 3</title>\n    <style>\n        table, th, td {\n            border: 1px solid black;\n        }\n    </style>\n</head>\n<body>\n    <table>\n        <thead>\n        <tr>\n            <th>i</th>\n            <th>fib</th>\n        </tr>\n        </thead>\n        <tbody>\n        </tbody>\n    </table>\n</body>\n\n<script>\n    console.log(Number.MAX_SAFE_INTEGER)\n\n    let x_last = Number(0);\n    let x = Number(1);\n    let table = document.querySelector(\"table\");\n\n\n    for(let i = 1; i <= 2000; i++) {\n        // calculate new value\n        let x_new = Number(x + x_last);\n\n        // update variables\n        x_last = x;\n        x = x_new;\n\n        // debug\n        console.log(i, x_last);\n\n        // add table row\n        let row = table.insertRow();\n        row.insertCell().appendChild(document.createTextNode(i));\n        row.insertCell().appendChild(document.createTextNode(x_last));\n    }\n</script>\n</html>"
+            "a": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Übung 4 - Aufgabe 3</title>\n    <style>\n        table, th, td {\n            border: 1px solid black;\n        }\n    </style>\n</head>\n<body>\n    <table>\n        <thead>\n        <tr>\n            <th>i</th>\n            <th>fib</th>\n        </tr>\n        </thead>\n        <tbody>\n        </tbody>\n    </table>\n</body>\n\n<script>\n    console.log(Number.MAX_SAFE_INTEGER)\n\n    let x_last = Number(0);\n    let x = Number(1);\n    let table = document.querySelector(\"table\");\n\n\n    for(let i = 1; i <= 2000; i++) {\n        // calculate new value\n        let x_new = Number(x + x_last);\n\n        // update variables\n        x_last = x;\n        x = x_new;\n\n        // debug\n        console.log(i, x_last);\n\n        // add table row\n        let row = table.insertRow();\n        row.insertCell().appendChild(document.createTextNode(i));\n        row.insertCell().appendChild(document.createTextNode(x_last));\n    }\n</script>\n</html>",
+            "path": "./solutions/u4/a3.html"
           },
           {
             "q": "Was ist die größte Fibonacci-Zahl, die sich noch als Integer sicher speichern lässt (Number.MAX_SAFE_INTEGER)? Die wievielte Fibonacci-Zahl in der Fibonacci-Folge ist das?",
@@ -255,7 +259,7 @@
           },
           {
             "q": "Testen Sie Ihren JavaScript-Code. Verwenden Sie für Ihre Tests die Funktion console.assert. Geben Sie hier Ihre Tests ein:",
-            "a": "    // debug/test result\n    console.log(\"debug:\")\n    console.log(\"graph: \", graph);\n    console.log(\"top_sort: \", top_sort);\n    console.log(\"\");\n    console.log(\"result:\")\n    console.log(\"top_sort (as list): \", top_sort.map(x => x.name));"
+            "a": "// debug/test result\nconsole.log(\"debug:\")\nconsole.log(\"graph: \", graph);\nconsole.log(\"top_sort: \", top_sort);\nconsole.log(\"\");\nconsole.log(\"result:\")\nconsole.log(\"top_sort (as list): \", top_sort.map(x => x.name));"
           }
         ]
       }
@@ -271,7 +275,8 @@
         "subtasks": [
           {
             "q": "Schreiben Sie eine ES6-Klasse Vorrang für Vorrangrelationen. Verwenden Sie die neuen Sprach-Konzepte aus der Vorlesung so weit wie möglich.",
-            "a": "class Vorrang {\n    constructor(graph_def) {\n        this._graph_def = graph_def;\n        this.node_names_processed = [];\n        this.graph = [];\n\n        // generate graph\n        this._graph_def.forEach(edge => {\n            edge.forEach(node_name => {\n                if (!this.node_names_processed.includes(node_name)) {\n                    this.graph.push(new Node(node_name));\n                    this.node_names_processed.push(node_name);\n                }\n            })\n        })\n\n        // add edges to nodes\n        this._graph_def.forEach(edge => {\n            let start_node = this.graph.find(n => n._name === edge[0]);\n            let end_node = this.graph.find(n => n._name === edge[1]);\n            start_node.addEdge(end_node);\n        })\n\n        // declare needed structures\n        this.top_sort_reversed = [];\n        this.top_sort = [];\n        this.found_nodes = [];\n\n        // generate top_sort_reversed\n        this.graph.forEach(n => {\n            if (!this.found_nodes.includes(n)) {\n                this.topSortHelper(n);\n            }\n        })\n\n        // flip top_sort_reversed into top_sort\n        while (this.top_sort_reversed.length > 0) {\n            this.top_sort.push(this.top_sort_reversed.pop());\n        }\n    }\n\n    topSort() {\n        return this.top_sort.map(x => x._name)\n    }\n\n    topSortHelper(node) {\n        // add edge to found nodes\n        this.found_nodes.push(node);\n\n        // process each new adjacent node first\n        node._edges.forEach(n => {\n            if (!this.found_nodes.includes(n)) {\n                this.topSortHelper(n);\n            }\n        })\n\n        // all adjacent nodes have been processed\n        // add node to top_sort_reversed\n        this.top_sort_reversed.push(node);\n    }\n}\n\nclass Node {\n    constructor(name) {\n        this._name = name;\n        this._edges = [];\n    }\n\n    addEdge(node) {\n        this._edges.push(node);\n    }\n}\n\nlet myTopSort = new Vorrang([\n    [\"A\", \"C\"],\n    [\"A\", \"B\"],\n    [\"A\", \"D\"],\n    [\"C\", \"D\"],\n    [\"D\", \"E\"],\n    [\"E\", \"F\"],\n    [\"B\", \"G\"]\n]).topSort();\nlet correctTopSort = [\"A\", \"B\", \"G\", \"C\", \"D\", \"E\", \"F\"]\nlet sortsEquals = true;\n\n// test if sorts are equal\nfor (let i = 0; i < myTopSort.length; i++) {\n    if (myTopSort[i] != correctTopSort[i]) {\n        sortsEquals = false;\n    }\n}\n\nconsole.assert(sortsEquals, {\n    myTopSort: myTopSort,\n    correctTopSort: correctTopSort,\n    error: \"not equal\"\n})\nconsole.log(myTopSort)"
+            "src": "./solutions/u5/a1.html",
+            "path": "./solutions/u5/a1.html"
           }
         ]
       },
@@ -281,7 +286,8 @@
         "subtasks": [
           {
             "q": "Stellen Sie bei Ihrer Klasse aus der letzten Aufgabe die topologische Iterierbarkeit her (zunächst über das Iterationsprotokoll, ohne Generator, ohne yield).",
-            "a": "class VorrangIterator extends Vorrang {\n    [Symbol.iterator]() {\n        let i = 0;\n        const sorted = this.topSort();\n        console.log(\"sorted:\", sorted);\n        return {\n            next() {\n                return {\n                    value: sorted[i++],\n                    done: i > sorted.length\n                }\n            }\n        }\n    }\n}\n\n// define and calculate topSort\nlet vorrang = new VorrangIterator([\n    [\"A\", \"C\"],\n    [\"A\", \"B\"],\n    [\"A\", \"D\"],\n    [\"C\", \"D\"],\n    [\"D\", \"E\"],\n    [\"E\", \"F\"],\n    [\"B\", \"G\"]\n]);\nlet myTopSort = vorrang.topSort();\nlet correctTopSort = [\"A\", \"B\", \"G\", \"C\", \"D\", \"E\", \"F\", \"SAD\"]\nlet sortsEquals = true;\n\n\n// test / debug\nlet i = 0;\nfor (const x of vorrang) {\n    console.log(x);\n    console.assert(x === correctTopSort[i++])\n}\nconsole.assert(vorrang[Symbol.iterator].length === correctTopSort.length)\nconsole.assert(sortsEquals, {\n    myTopSort: myTopSort,\n    correctTopSort: correctTopSort,\n    error: \"not equal\"\n})"
+            "src": "./solutions/u5/a2.html",
+            "path": "./solutions/u5/a2.html"
           }
         ]
       },
@@ -291,7 +297,8 @@
         "subtasks": [
           {
             "q": "Stellen Sie bei Ihrer Klasse aus der vorletzten Aufgabe die topologische Iterierbarkeit mittels Generator her.",
-            "a": "class VorrangGenerator extends Vorrang {\n    * gen() {\n        let i = 0;\n        while (i < this.top_sort.length) yield this.top_sort[i++];\n    }\n}\n\n// define and calculate topSort\nlet vorrang = new VorrangGenerator([\n    [\"A\", \"C\"],\n    [\"A\", \"B\"],\n    [\"A\", \"D\"],\n    [\"C\", \"D\"],\n    [\"D\", \"E\"],\n    [\"E\", \"F\"],\n    [\"B\", \"G\"]\n]);\nlet myTopSort = vorrang.topSort();\nlet correctTopSort = [\"A\", \"B\", \"G\", \"C\", \"D\", \"E\", \"F\"]\nlet sortsEquals = true;\n\n\n// test / debug\nlet i = 0;\nconst g = vorrang.gen();\nfor (let l = 0; l < myTopSort.length; l++) {\n    const x = g.next().value._name;\n    console.log(x);\n    console.assert(x === correctTopSort[i++])\n}\nconsole.assert(sortsEquals, {\n    myTopSort: myTopSort,\n    correctTopSort: correctTopSort,\n    error: \"not equal\"\n})"
+            "src": "./solutions/u5/a3.html",
+            "path": "./solutions/u5/a3.html"
           }
         ]
       },
@@ -300,8 +307,10 @@
         "txt": "Proxy",
         "subtasks": [
           {
-            "q": "Erweitern Sie Ihre Vorrang-Klasse um Logging, indem Sie ein Proxy einfügen. Lassen Sie sich vom Logger bei jedem Schritt ausgeben, wie viele der Vorrangrelationen noch übrig bleiben. Verwenden Sie so weit wie möglich High-Level-Methoden wie Object.keys und High-Level-Datenstrukturen wie Map und Set und deren Methoden, anstatt mühsam von Hand zu iterieren und zu zählen.",
-            "a": "// define Vorrang\nlet v = new Vorrang([\n    [\"A\", \"C\"],\n    [\"A\", \"B\"],\n    [\"A\", \"D\"],\n    [\"C\", \"D\"],\n    [\"D\", \"E\"],\n    [\"E\", \"F\"],\n    [\"B\", \"G\"]\n]);\n\n// define handler\nconst vorrangLoggerHandler = {\n    get: function(target, prop, receiver) {\n        if (prop === 'topSortHelper') {\n            console.log(target.found_nodes.length + \" nodes have been processed\", \"-\",\n                target.node_names_processed.length - target.found_nodes.length + \" nodes left\");\n        }\n        return target[prop];\n    }\n};\n\n// define proxy\nconst proxy = new Proxy(v, vorrangLoggerHandler);\n\n// run topSort function on proxy\nlet topSort = proxy.topSort();\n\n// print result\nconsole.log(topSort);\n\n// test result\nlet correctTopSort = [\"A\", \"B\", \"G\", \"C\", \"D\", \"E\", \"F\"]\n\n// test if sorts are equal\nlet sortsEquals = true;\nfor (let i = 0; i < topSort.length; i++) {\n    if (topSort[i] !== correctTopSort[i]) {\n        sortsEquals = false;\n    }\n}\nconsole.assert(sortsEquals, {\n    topSort: topSort,\n    correctTopSort: correctTopSort,\n    error: \"not equal\"\n})"
+            "q": "Erweitern Sie Ihre Vorrang-Klasse um Logging, indem Sie ein Proxy einfügen.",
+            "q_extra": "Lassen Sie sich vom Logger bei jedem Schritt ausgeben, wie viele der Vorrangrelationen noch übrig bleiben. Verwenden Sie so weit wie möglich High-Level-Methoden wie Object.keys und High-Level-Datenstrukturen wie Map und Set und deren Methoden, anstatt mühsam von Hand zu iterieren und zu zählen.",
+            "src": "./solutions/u5/a4.html",
+            "path": "./solutions/u5/a4.html"
           }
         ]
       },
@@ -311,7 +320,8 @@
         "subtasks": [
           {
             "q": "Schreiben Sie eine rekursive Funktion deepCopy( struct ) als ES6-Ausdruck, so dass beliebig geschachtelte Arrays und Objekte struct tiefenkopiert werden können.",
-            "a": "// test object with numbers, strings, objects und arrays\nlet testObject = {\n    a: 3,\n    b: \"abc\",\n    c: {\n        x: {\n            pain: \"pain?\"\n        },\n        y: [\"pain1\", \"pain2\"]\n    },\n    d: [1, \"234\"]\n}\n\n// define deepCopy function\nlet deepCopy = (struct) => {\n    return Object.fromEntries(Object.entries(struct));\n}\n\n// copy by reference\ntestObjectCopied = testObject;\n\n// copy using deepCopy\ntestObjectDeepCopied = deepCopy(testObject);\n\n// test and debug\nconsole.assert(testObject === testObjectCopied); // should be the same object\nconsole.assert(testObject !== testObjectDeepCopied); // shouldn't be the same object, but have the same content\nconsole.log(\"original object: \\n\", testObject);\nconsole.log(\"deepCopied object: \\n\", testObjectDeepCopied);"
+            "src": "./solutions/u5/a5.html",
+            "path": "./solutions/u5/a5.html"
           }
         ]
       }
@@ -389,7 +399,8 @@
         "subtasks": [
           {
             "q": "Schreiben Sie in JavaScript eine Textanalyse. Ermitteln Sie die häufigsten Begriffe im Text Plagiatsresolution. Filtern Sie dabei alle Stoppworte und HTML-Tags. Reduzieren Sie das Ergebnis auf die 3 häufigsten Begriffe.",
-            "a": "// filter text\nlet text = \"Plagiatsresolution und -maßnahmenResolution zum akademischen Ethos und zu den akademischen StandardsIn guter Tradition und anlässlich der öffentlichen Diskussion zum Plagiatsthema sieht sich die Hochschule Bonn-Rhein-Sieg in der Pflicht, ihre Position klar und eindeutig zu bekunden und hochschulweit Maßnahmen einzuleiten.1. Die Hochschule Bonn-Rhein-Sieg bekennt sich mit dieser Resolution öffentlich zum akademischen Ethos und den akademischen Standards.2. Die Hochschule Bonn-Rhein-Sieg sieht sich verpflichtet, alle Studierende frühzeitig im Studium sowohl über den wissenschaftlichen Auftrag und den akademischen Ethos als auch über die Konsequenzen seiner Missachtung aufzuklären. In allen Studiengängen wird intensiv in die wissenschaftliche Arbeits- und Denkweise eingeführt und über den akademischen Ethos und die akademischen Standards klar und eindeutig aufgeklärt.3. In einer Selbstverpflichtungserklärung zum akademischen Ethos geben alle Studierende der Hochschule Bonn-Rhein-Sieg spätestens gegen Ende des ersten Studienjahres zum Ausdruck, dass sie sich von den Dozentinnen und Dozenten der Hochschule Bonn-Rhein-Sieg hinreichend über den akademischen Ethos und die akademischen Standards aufgeklärt sind und diese beachten werden.Der Senat befürwortete in seiner Sitzung am 03.05.2012 die Resolution in der o.g. Fassung.Eckpunkte zur PlagiatsprüfungDer Senat empfiehlt:1. Die Aufklärung und das Bekenntnis zum akademischen Ethos und den akademischen Standards muss fester Bestandteil aller Curricula aller Studiengänge im ersten Studienjahr sein. Alle Curricula aller Studiengänge werden darauf hin geprüft und ggfs. ergänzt.2. Alle Abschlussarbeiten werden auf Plagiate geprüft.3. Alle Abschlussarbeiten mit Plagiaten werden grundsätzlich als Fehlversuch gewertet.4. Die Entscheidung, ob die Arbeit Plagiate enthält, liegt zuerst bei den Gutachterinnen und Gutachtern. Der Nachweis in einem Gutachten reicht.5. Alle Abschlussarbeiten werden grundsätzlich auch in elektronischer Form (PDF-Format und Originalformat wie Word, OpenOffice, ...) eingereicht.6. Alle Abschlussarbeiten ohne Sperrvermerk werden einem vom Fachbereich definierten Kreis zur Einsicht zur Verfügung gestellt. Alle Abschlussarbeiten sollten nach Möglichkeit grundsätzlich zur Veröffentlichung freigegeben werden. Wissenschaft zielt auf Veröffentlichung ab. Nichtveröffentlichung sollte nur in begründeten und durch den Prüfungsausschuss genehmigten Ausnahmefällen geschehen.7. Im Bereich von Seminar-, Hausarbeiten und Praktikumsberichten behält sich die Hochschule stichprobenartige Plagiatsprüfungen vor.Selbstverpflichtungserklärung der Studierenden:Eine akademische Arbeit stellt eine individuelle Leistung dar, die eigenständig und allein auf Basis der im Literaturverzeichnis angegebenen Quellen erstellt wurde und in der alle Zitate als solche gekennzeichnet sind.\\\"Ich erkläre hiermit, dass ich den akademischen Ehrencodex kenne und über die Folgen einer Missachtung oder Verletzung aufgeklärt worden bin.\\\"\";\nlet textOhneSonderzeichen = text.split(\"\").map(c => [\".\", \",\", \"\\\"\", \"-\", \":\", \")\", \"(\"].includes(c) ? \" \" : c).join(\"\")\nlet words = textOhneSonderzeichen.split(\" \").filter(x => x !== \"\");\n\n// count words\nlet wordCounts = words.reduce(function(acc, curr) {\n    if (typeof acc[curr] == 'undefined') {\n        acc[curr] = 1;\n    } else {\n        acc[curr] += 1;\n    }\n    return acc;\n}, {});\n\n// sort words by word count\nwordsSorted = Object.keys(wordCounts).sort((x, y) => wordCounts[y] - wordCounts[x]);\n\n// get 3 most common words\nlet mostCommonWords = wordsSorted.splice(0, 3).map(x => ({\n    word: x,\n    count: wordCounts[x]\n}))\n\n// print\nconsole.log(mostCommonWords);"
+            "src": "./solutions/u6/a2.html",
+            "path": "./solutions/u6/a2.html"
           }
         ]
       }
@@ -417,7 +428,7 @@
           {
             "q": "Implementieren Sie die interaktive Anwendung \"Rednerliste mit Zeitmessung\" selbstständig in JavaScript durch Nutzung der DOM API und der Timer-Funktionen.",
             "path": "./solutions/u7/a2.html",
-            "src": "./solutions/u7/a2.html"
+            "src": "./solutions/u7/a2.js"
           }
         ]
       }
@@ -518,7 +529,7 @@
         "txt": "Login mit PHP",
         "subtasks": [
           {
-            "q": "Schreiben Sie eine sichere PHP-Lösung für Login.",
+            "q": "Schreiben Sie eine sichere PHP-Lösung für einen Login.",
             "q_extra": "Der Login soll die persistierten Registrierungsdaten aus der letzten Aufgabe nutzten.",
             "src": "./solutions/u10/a2_src.txt",
             "path": "./solutions/u10/a2.php"
