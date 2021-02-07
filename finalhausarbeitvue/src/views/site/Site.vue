@@ -3,13 +3,13 @@
     <div class="heading">
       <h1 @click="$router.push('/')"> Tobias Schneider </h1>
       <div class="socialmedia">
-        <a href="https://github.com/iMilchshake" class="fa fa-github"></a>
-        <a href="mailto:Tobias20.3@hotmail.de" class="fas fa-envelope"></a>
+        <a class="icon" href="https://github.com/iMilchshake"><img src="@/assets/GitHub-Mark-64px.png"></a>
+        <a class="icon" href="mailto:Tobias20.3@hotmail.de"><img src="@/assets/GitHub-Mark-64px.png"></a>
+
       </div>
     </div>
     <div class="menu">
       <button class="menu_button" @click="$router.push('/site/home')">Home</button>
-      <button class="menu_button" @click="$router.push('/site/about/about')">About</button>
       <button class="menu_button" @click="$router.push('/site/navigator/')">Navigator</button>
       <button class="menu_button" @click="redirectToRouter()">Editor</button>
     </div>
@@ -54,7 +54,21 @@ export default {
   align-items: center;
   padding: 10px;
   font-size: 23px;
-  background-color: #a9cbff;
+  /*background-color: #a9cbff;*/
+  background-image: linear-gradient(to right, #cee2ff, #8aa5d0);
+}
+
+.socialmedia {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  align-self: center;
+}
+
+.icon{
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 32px;
+  height: 64px;
 }
 
 .menu {
@@ -64,6 +78,7 @@ export default {
   top: 0;
   display: flex;
   gap: 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .content_wrapper {
@@ -82,6 +97,7 @@ export default {
   display: inline-block;
   font-size: 16px;
   height: 100%;
+  min-width: 105px;
 }
 
 .menu_button_current {
