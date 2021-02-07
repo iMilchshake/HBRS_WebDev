@@ -4,7 +4,7 @@
       <h1 @click="$router.push('/')"> Tobias Schneider </h1>
       <div class="socialmedia">
         <a class="icon" href="https://github.com/iMilchshake"><img src="@/assets/GitHub-Mark-64px.png"></a>
-        <a class="icon" href="mailto:Tobias20.3@hotmail.de"><img src="@/assets/GitHub-Mark-64px.png"></a>
+        <a class="icon" href="mailto:tobias.schneider@smail.inf.h-brs.de"><img src="@/assets/mail.png"></a>
 
       </div>
     </div>
@@ -66,7 +66,7 @@ export default {
 }
 
 .icon{
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
   border-radius: 32px;
   height: 64px;
 }
