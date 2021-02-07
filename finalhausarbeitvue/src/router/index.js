@@ -4,7 +4,6 @@ import About from "../views/site/about_wrapper/about/About";
 import Welcome from "../views/welcome/Welcome";
 import About_wrapper from "../views/site/about_wrapper/About_wrapper";
 import About2 from "../views/site/about_wrapper/about2/About2";
-import Navigator_wrapper from "../views/site/navigator_wrapper/Navigator_wrapper";
 import Site from "../views/site/Site";
 import NotFound from "../views/NotFound/NotFound";
 import a1 from "../views/site/navigator_wrapper/u9/a1";
@@ -40,7 +39,7 @@ const routes = [
             {
                 path: '/site/navigator/',
                 name: 'Navigator',
-                component: Navigator_wrapper,
+                component: () => import("../views/site/navigator_wrapper/Navigator_wrapper"),
                 children: []
             }]
 

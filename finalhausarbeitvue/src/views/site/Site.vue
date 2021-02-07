@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="menu">
-      <button class="menu_button" @click="$router.push('/site/home')">Home</button>
+      <button class="menu_button" @click="$router.push('/site/home')">Start</button>
       <button class="menu_button" @click="$router.push('/site/navigator/')">Navigator</button>
       <button class="menu_button" @click="redirectToRouter()">Editor</button>
     </div>

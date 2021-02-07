@@ -49,11 +49,7 @@ h1 {
 }
 
 .bg {
-  /*background-image: url("../../assets/code_blurred.jpg");*/
   background-image: linear-gradient(#cee2ff, #8aa5d0);
-  /*filter: blur(12px);
-  -webkit-filter: blur(12px);
-*/
   width: 100%;
   min-height: 100vh;
 

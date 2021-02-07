@@ -17,8 +17,8 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
