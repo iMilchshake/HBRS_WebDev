@@ -5,14 +5,27 @@
     <title>Editor</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 </head>
 <style>
     body {
         font-family: 'Dosis', sans-serif;
+        background-color: #a9cbff;
+    }
+
+    .background {
+        background-color: white;
         border: 1px solid black;
         border-radius: 3px;
         padding: 1em;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: auto 1fr;
+        gap: 0.25em 1em;
     }
 
     .display_row label {
@@ -29,15 +42,25 @@
         width: 100%;
     }
 
-    textarea {
-        width: 100%;
+    input, select, textarea {
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+        padding: 10px;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+        outline: none;
     }
 
-    .grid {
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: auto 1fr;
-        gap: 0.25em 1em;
+    label {
+        display: block;
+
+        align-self: center;
+    }
+
+    textarea {
+        width: 100%;
+        resize: vertical;
     }
 
     .full_row {
@@ -64,77 +87,79 @@
     }
 </style>
 <body>
-<h1> Editor </h1>
-<div class="grid">
-    <label for="select_uebung">Übung:</label>
-    <div>
-        <select id="select_uebung">
-            <option disabled selected value> - Select -</option>
-        </select>
-        <input type="button" value="+" id="button_adduebung">
-    </div>
+<div class="background">
 
-    <label for="edit_heading"> Titel:</label>
-    <input type="text" id="edit_heading">
+    <h1> Editor </h1>
+    <div class="grid">
+        <label for="select_uebung">Übung:</label>
+        <div>
+            <select id="select_uebung">
+                <option disabled selected value> - Select -</option>
+            </select>
+            <input type="button" value="+" id="button_adduebung">
+        </div>
 
-    <div class="full_row">
-        <hr>
-    </div>
+        <label for="edit_heading"> Titel:</label>
+        <input type="text" id="edit_heading">
 
-    <label for="select_aufgabe">Aufgabe:</label>
-    <div>
-        <select id="select_aufgabe">
-            <option disabled selected value> --</option>
-        </select>
-        <input type="button" value="+" id="button_addaufgabe">
-    </div>
+        <div class="full_row">
+            <hr>
+        </div>
 
-    <label for="edit_txt"> Titel:</label>
-    <input type="text" id="edit_txt">
+        <label for="select_aufgabe">Aufgabe:</label>
+        <div>
+            <select id="select_aufgabe">
+                <option disabled selected value> --</option>
+            </select>
+            <input type="button" value="+" id="button_addaufgabe">
+        </div>
 
-    <div class="full_row">
-        <hr>
-    </div>
+        <label for="edit_txt"> Titel:</label>
+        <input type="text" id="edit_txt">
 
-    <label for="select_unteraufgabe">Unteraufgabe:</label>
-    <div>
-        <select id="select_unteraufgabe">
-            <option disabled selected value> --</option>
-        </select>
-        <input type="button" value="+" id="button_addunteraufgabe">
-    </div>
+        <div class="full_row">
+            <hr>
+        </div>
 
-    <label for="edit_q"> Aufgabe:</label>
-    <textarea rows="3" id="edit_q"> </textarea>
+        <label for="select_unteraufgabe">Unteraufgabe:</label>
+        <div>
+            <select id="select_unteraufgabe">
+                <option disabled selected value> --</option>
+            </select>
+            <input type="button" value="+" id="button_addunteraufgabe">
+        </div>
 
-
-    <label for="edit_q_extra"> Erweitert: </label>
-    <textarea rows="3" id="edit_q_extra"> </textarea>
+        <label for="edit_q"> Aufgabe:</label>
+        <textarea rows="3" id="edit_q"> </textarea>
 
 
-    <label for="edit_a"> Antwort: </label>
-    <textarea rows="3" id="edit_a"> </textarea>
+        <label for="edit_q_extra"> Erweitert: </label>
+        <textarea rows="3" id="edit_q_extra"> </textarea>
 
 
-    <label for="edit_src"> Code-Pfad:</label>
-    <input type="text" id="edit_src">
+        <label for="edit_a"> Antwort: </label>
+        <textarea rows="3" id="edit_a"> </textarea>
 
-    <label for="edit_path"> Pfad:</label>
-    <input type="text" id="edit_path">
 
-    <label for="edit_route"> Route:</label>
-    <input type="text" id="edit_route">
+        <label for="edit_src"> Code-Pfad:</label>
+        <input type="text" id="edit_src">
 
-    <div class="full_row">
-        <hr>
-    </div>
+        <label for="edit_path"> Pfad:</label>
+        <input type="text" id="edit_path">
 
-    <div class="full_row">
-        <input type="button" value="Export" id="button_export">
-        <input type="button" value="Debug" id="button_debug">
+        <label for="edit_route"> Route:</label>
+        <input type="text" id="edit_route">
+
+        <div class="full_row">
+            <hr>
+        </div>
+
+        <div class="full_row">
+            <input type="button" value="Export" id="button_export">
+            <input type="button" value="Debug" id="button_debug">
+        </div>
     </div>
 </div>
-
 </body>
 </html>
 

@@ -40,8 +40,9 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px;
+  padding: 10px;
   font-size: 23px;
+  background-color: #a9cbff;
 }
 
 .menu {
