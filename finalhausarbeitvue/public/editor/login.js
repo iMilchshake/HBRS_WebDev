@@ -3,19 +3,32 @@ document.getElementById("button_login").addEventListener("click", x => {
     sendData(document.getElementById("user").value, document.getElementById("pass").value);
 });
 
+document.getElementById("pass").addEventListener("keydown", x => {
+    if(x.key === "Enter") {
+        document.getElementById("button_login").click();
+    }
+});
+
+document.getElementById("user").addEventListener("keydown", x => {
+    if(x.key === "Enter") {
+        document.getElementById("button_login").click();
+    }
+});
+
+// define login function
 function sendData(username, password) {
     // define request
-    let xhr = new XMLHttpRequest();
+    let http = new XMLHttpRequest();
     const url = "./login.php";
     const jsonData = JSON.stringify({user: username, pass: password});
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
+    http.open("POST", url, true);
+    http.setRequestHeader("Content-Type", "application/json");
 
     // define response
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+    http.onreadystatechange = function () {
+        if (http.readyState === 4 && http.status === 200) {
             // parse response to json
-            let jsonResponse = JSON.parse(xhr.responseText);
+            let jsonResponse = JSON.parse(http.responseText);
 
             // display response to user
             switch(jsonResponse['status']) {
@@ -32,5 +45,5 @@ function sendData(username, password) {
     };
 
     // send request
-    xhr.send(jsonData);
+    http.send(jsonData);
 }

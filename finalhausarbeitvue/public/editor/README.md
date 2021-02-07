@@ -13,8 +13,8 @@
 4. ~~connect editor to main page~~
 
 ## QoL
-- skip login screen when already logged in
-- login with enter key (on the keyboard)
-- Link back to navigator
+- ~~skip login screen when already logged in~~
+- ~~login with enter key (on the keyboard)~~
+- ~~Link back to navigator~~
 
 

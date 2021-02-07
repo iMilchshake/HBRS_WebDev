@@ -11,7 +11,7 @@
       <button class="menu_button" @click="$router.push('/site/home')">Home</button>
       <button class="menu_button" @click="$router.push('/site/about/about')">About</button>
       <button class="menu_button" @click="$router.push('/site/navigator/')">Navigator</button>
-      <button class="menu_button" onclick="window.location.href = './editor/login.html'">Editor</button>
+      <button class="menu_button" @click="redirectToRouter()">Editor</button>
     </div>
     <div class="content_wrapper">
       <router-view/>
@@ -22,7 +22,19 @@
 
 <script>
 export default {
-  name: "Site"
+  name: "Site",
+  methods: {
+    redirectToRouter: function () {
+      // check if user is already logged in
+      fetch("editor/login_check.php").then(response => response.json()).then(json => {
+        if (json["login"] === "True") {
+          window.location.href = 'editor/main.html';
+        } else {
+          window.location.href = 'editor/login.html';
+        }
+      }).catch(error => console.error(error));
+    }
+  }
 }
 </script>
 
