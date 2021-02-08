@@ -24,7 +24,7 @@ export default createStore({
         },
         switchMenu(state) {
             state.show_menu = !state.show_menu;
-            console.log(state.show_menu);
+            //console.log(state.show_menu);
         }
 
     },

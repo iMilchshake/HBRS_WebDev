@@ -9,9 +9,6 @@ export default {
   name: 'App',
   components: {},
   created() {
-    fetch("./exercises.json")
-        .then(x => x.json())
-        .then(x => this.$store.commit("readData", x));
   }
 }
 </script>
