@@ -56,8 +56,8 @@ export default {
   align-items: center;
   padding: 10px;
   font-size: 23px;
-  /*background-color: #a9cbff;*/
   background-image: linear-gradient(to right, #cee2ff, #8aa5d0);
+  user-select: none;
 }
 
 .socialmedia {
@@ -117,6 +117,7 @@ body {
 
 h1 {
   margin: 0;
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {
