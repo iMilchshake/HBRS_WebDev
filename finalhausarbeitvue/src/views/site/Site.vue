@@ -12,9 +12,10 @@
       <button class="menu_button" @click="$router.push('/site/home')">Start</button>
       <button class="menu_button" @click="$router.push('/site/navigator/')">Navigator</button>
       <button class="menu_button" @click="redirectToRouter()">Editor</button>
+      <button class="menu_button" @click="$router.push('/site/navigator/')">TicTacToe</button>
     </div>
     <div class="content_wrapper">
-      <router-view/>
+        <router-view/>
     </div>
 
   </div>
@@ -39,17 +40,6 @@ export default {
 </script>
 
 <style scoped>
-
-@media only screen and (max-width: 500px) {
-  .socialmedia {
-    display: none;
-    visibility: hidden;
-  }
-
-  .icon {
-    display: none;
-  }
-}
 
 .layout {
   display: grid;
@@ -77,10 +67,15 @@ export default {
   align-self: center;
 }
 
-.icon{
+.icon {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
   border-radius: 32px;
   height: 64px;
+}
+
+.content_wrapper {
+  grid-area: 3 / 1 / span 1/ span 1;
+  background: whitesmoke;
 }
 
 .menu {
@@ -91,11 +86,6 @@ export default {
   display: flex;
   gap: 0;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.content_wrapper {
-  grid-area: 3 / 1 / span 1/ span 1;
-  background: whitesmoke;
 }
 
 .menu_button {
@@ -128,4 +118,38 @@ body {
 h1 {
   margin: 0;
 }
+
+@media (max-width: 600px) {
+  .socialmedia {
+    display: none;
+    visibility: hidden;
+  }
+
+  .icon {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu_button {
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 0;
+    width: auto;
+  }
+
+  .menu {
+    gap: 8px;
+    justify-content: space-around;
+  }
+
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+
 </style>

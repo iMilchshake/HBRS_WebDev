@@ -132,12 +132,6 @@ export default {
 
 <style scoped>
 
-@media only screen and (max-width: 600px) {
-  .codeblock {
-    font-size: 11px;
-  }
-}
-
 .switch_button {
   border-width: 1px; /* top right bottom left */
   border-style: solid solid solid solid;
@@ -234,4 +228,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+@media (max-width: 600px) {
+  .codeblock {
+    font-size: 11px;
+  }
+}
+
 </style>

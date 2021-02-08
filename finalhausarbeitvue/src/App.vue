@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+      <router-view/>
   </div>
 </template>
 
@@ -19,6 +19,7 @@ export default {
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
