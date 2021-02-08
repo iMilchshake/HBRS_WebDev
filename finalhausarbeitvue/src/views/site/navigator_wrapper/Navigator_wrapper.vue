@@ -138,10 +138,6 @@ export default {
   }
 }
 
-.content {
-  padding: 5px 30px 30px 30px;
-}
-
 .switch_button {
   border-width: 1px; /* top right bottom left */
   border-style: solid solid solid solid;
@@ -169,6 +165,25 @@ export default {
   word-break: break-all; /* break code pieces to allow responsive design TODO: remove /t's when too small*/
 }
 
+.navigation_wrapper {
+  /*display: grid;*/
+  /*grid-template-columns: auto 1fr;*/
+  /*grid-template-rows: 1fr;*/
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.content {
+  padding: 5px 30px 30px 30px;
+}
+
+/*.collapse_menu_wrapper {*/
+/*  flex-grow: 1;*/
+/*  flex-shrink: 1;*/
+/*  flex-basis: 100%;*/
+/*}*/
+
 .nav_navigator {
   padding-top: 1em;
   display: flex;
@@ -177,6 +192,9 @@ export default {
   width: 105px;
   cursor: pointer;
   user-select: none;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 105px;
 }
 
 .topic_group {
@@ -215,12 +233,5 @@ img {
   max-height: 450px;
   max-width: 100%;
   height: auto;
-}
-
-.navigation_wrapper {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 1fr;
-  height: 100%;
 }
 </style>
