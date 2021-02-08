@@ -39,6 +39,18 @@ export default {
 </script>
 
 <style scoped>
+
+@media only screen and (max-width: 500px) {
+  .socialmedia {
+    display: none;
+    visibility: hidden;
+  }
+
+  .icon {
+    display: none;
+  }
+}
+
 .layout {
   display: grid;
   grid-template-columns: 1fr;

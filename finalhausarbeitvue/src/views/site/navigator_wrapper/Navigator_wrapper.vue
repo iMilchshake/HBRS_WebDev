@@ -132,6 +132,12 @@ export default {
 
 <style scoped>
 
+@media only screen and (max-width: 600px) {
+  .codeblock {
+    font-size: 11px;
+  }
+}
+
 .content {
   padding: 5px 30px 30px 30px;
 }
@@ -151,6 +157,8 @@ export default {
   background-color: #eff0f1;
   border-radius: 3px;
   border: 1px solid black;
+  max-height: 600px;
+  overflow: auto;
 }
 
 .QA_section h1, h2, h3, p, code {
