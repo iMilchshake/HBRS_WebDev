@@ -4,6 +4,7 @@ export default createStore({
     state: {
         topic: "",
         subtopic: "",
+        show_menu: true,
         data: []
     },
     mutations: {
@@ -19,8 +20,13 @@ export default createStore({
         },
         readData(state, d) {
             state.data = d;
-            console.log("reading data..", d);
+            console.log("navigator is fetching data..", d);
+        },
+        switchMenu(state) {
+            state.show_menu = !state.show_menu;
+            console.log(state.show_menu);
         }
+
     },
     actions: {},
     modules: {}
