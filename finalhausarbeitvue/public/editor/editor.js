@@ -213,18 +213,16 @@ function sendData() {
     // save data before sending
     save();
 
-    // define request
-    let xhr = new XMLHttpRequest();
-    const url = "./test.php";
-    const jsonData = JSON.stringify(json);
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
+    // define POST request
+    let http = new XMLHttpRequest();
+    http.open("POST", "./editor.php", true);
+    http.setRequestHeader("Content-Type", "application/json");
 
     // define response
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+    http.onreadystatechange = function () {
+        if (http.readyState === 4 && http.status === 200) {
             // parse response to json
-            let jsonResponse = JSON.parse(xhr.responseText);
+            let jsonResponse = JSON.parse(http.responseText);
 
             // display response to user
             switch(jsonResponse['status']) {
@@ -240,5 +238,5 @@ function sendData() {
     };
 
     // send request
-    xhr.send(jsonData);
+    http.send(JSON.stringify(json));
 }

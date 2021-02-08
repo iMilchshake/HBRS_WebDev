@@ -29,7 +29,7 @@ export default {
       // check if user is already logged in
       fetch("editor/login_check.php").then(response => response.json()).then(json => {
         if (json["login"] === "True") {
-          window.location.href = './editor/main.html';
+          window.location.href = './editor/editor.html';
         } else {
           window.location.href = './editor/login.html';
         }

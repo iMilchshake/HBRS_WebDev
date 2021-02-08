@@ -3,12 +3,12 @@ document.getElementById("button_login").addEventListener("click", x => {
     sendData(document.getElementById("user").value, document.getElementById("pass").value);
 });
 
+// auto-click login button when pressing the Enter-Key on the keyboard
 document.getElementById("pass").addEventListener("keydown", x => {
     if(x.key === "Enter") {
         document.getElementById("button_login").click();
     }
 });
-
 document.getElementById("user").addEventListener("keydown", x => {
     if(x.key === "Enter") {
         document.getElementById("button_login").click();
@@ -19,9 +19,7 @@ document.getElementById("user").addEventListener("keydown", x => {
 function sendData(username, password) {
     // define request
     let http = new XMLHttpRequest();
-    const url = "./login.php";
-    const jsonData = JSON.stringify({user: username, pass: password});
-    http.open("POST", url, true);
+    http.open("POST", "./login.php", true);
     http.setRequestHeader("Content-Type", "application/json");
 
     // define response
@@ -34,7 +32,7 @@ function sendData(username, password) {
             switch(jsonResponse['status']) {
                 case 'success':
                     console.log("response:", jsonResponse);
-                    window.location.href = './main.html';
+                    window.location.href = 'editor.html';
                     break;
                 case 'error':
                     console.error("response", jsonResponse);
@@ -45,5 +43,5 @@ function sendData(username, password) {
     };
 
     // send request
-    http.send(jsonData);
+    http.send(JSON.stringify({user: username, pass: password}));
 }
