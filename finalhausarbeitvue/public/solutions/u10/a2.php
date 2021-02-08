@@ -17,7 +17,7 @@
         <label for="user">user:</label><br>
         <input type="text" id="user" name="user"><br>
         <label for="pass">pass:</label><br>
-        <input type="text" id="pass" name="pass"><br><br>
+        <input type="password" id="pass" name="pass"><br><br>
         <input type="submit" id="button" value="Submit">
     </fieldset>
 </form>
@@ -38,6 +38,8 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
 
     if($success) {
         echo 'success!';
+    } else {
+        echo 'invalid login!';
     }
 }
 ?>
