@@ -5,7 +5,7 @@
         <h1> Hey, you seem lost! </h1>
         <h2> 404 Not Found </h2>
         <hr>
-        <button type="button" class="welcome_button" @click="$router.push('/site/home')"> Return! </button>
+        <button type="button" class="button" @click="$router.push('/site/home')"> Return! </button>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@ h1 {
   margin: 2em 1em;
 }
 
-.welcome_button {
+.button {
   background-color: white;
   border: none;
   outline: none;
@@ -44,7 +44,7 @@ h1 {
   cursor: pointer;
 }
 
-.welcome_button:hover {
+.button:hover {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
   background-color: ghostwhite;
 }

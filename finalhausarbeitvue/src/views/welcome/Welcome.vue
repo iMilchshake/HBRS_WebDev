@@ -4,7 +4,7 @@
       <div class="caption">
         <h1> Hey, im Tobi! </h1>
         <hr>
-        <button type="button" class="welcome_button" @click="$router.push('/site/home')"> check out my site</button>
+        <button type="button" class="button" @click="$router.push('/site/home')"> check out my site</button>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@ h1 {
   margin: 2em 1em;
 }
 
-.welcome_button {
+.button {
   background-color: white;
   border: none;
   outline: none;
@@ -43,7 +43,7 @@ h1 {
   cursor: pointer;
 }
 
-.welcome_button:hover {
+.button:hover {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
   background-color: ghostwhite;
 }
