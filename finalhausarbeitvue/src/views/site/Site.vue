@@ -12,7 +12,7 @@
       <button class="menu_button" @click="$router.push('/site/home')">Start</button>
       <button class="menu_button" @click="$router.push('/site/navigator/')">Navigator</button>
       <button class="menu_button" @click="redirectToRouter()">Editor</button>
-      <button class="menu_button" @click="$router.push('/site/navigator/')">TicTacToe</button>
+      <button class="menu_button" onclick="window.location.href = './tictactoe/tictactoe.html';">TicTacToe</button>
     </div>
     <div class="content_wrapper">
         <router-view/>

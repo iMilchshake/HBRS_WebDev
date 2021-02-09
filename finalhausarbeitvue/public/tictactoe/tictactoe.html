@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TicTacToe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .content {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: white;
+            padding: 1em;
+            margin: 2em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        hr {
+            width: 100%;
+        }
+
+        .tictactoe {
+            display: grid;
+            grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+            grid-gap: 5px;
+            padding: 5px;
+            width: 500px;
+            height: 500px;
+            border: none;
+            border-radius: 4px;
+            padding: 1em 0 1em 0;
+        }
+
+        .button {
+            background-color: white;
+            border: none;
+            outline: none;
+            color: #000000;
+            padding: 15px 0px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            margin: 1.5em 1em 0.5em 1em;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            width: 150px;
+        }
+
+        .button:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            background-color: ghostwhite;
+        }
+
+        .button_box {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Dosis', sans-serif;
+            background: linear-gradient(#cee2ff, #8aa5d0) fixed;
+        }
+
+        .tictactoe_button {
+            background-color: #5b5b5b; /* Green */
+            border: 1px solid black;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 32px;
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .tictactoe_button_teamHuman {
+            background-color: #57ca60;
+        }
+
+        .tictactoe_button_teamAI {
+            background-color: #ffb852;
+        }
+
+        @media (max-width: 660px), (max-height: 800px) {
+            .tictactoe_button {
+                font-size: 16px;
+            }
+
+            .tictactoe {
+                width: 250px;
+                height: 250px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .button {
+                width: 75px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="content">
+        <h1> Tic-Tac-Toe AI</h1>
+        <hr>
+        <div class="tictactoe">
+            <button type="button" class="tictactoe_button"></button>
+            <button type="button" class="tictactoe_button"></button>
+            <button type="button" class="tictactoe_button"></button>
+            <button type="button" class="tictactoe_button"></button>
+            <button type="button" class="tictactoe_button"></button>
+            <button type="button" class="tictactoe_button"></button>
+            <button type="button" class="tictactoe_button"></button>
+            <button type="button" class="tictactoe_button"></button>
+            <button type="button" class="tictactoe_button"></button>
+        </div>
+        <hr>
+        <div class="button_box">
+            <button class="button" id="button_restart"> Restart </button>
+            <button class="button" id="button_exit"> Exit </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="kinotto_tictactoe.min.js"></script>
+<script type="text/javascript" src="tictactoe.js"></script>
