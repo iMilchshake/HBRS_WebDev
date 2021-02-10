@@ -1,4 +1,4 @@
-# Webdevelopment Hausarbeit
+# Web Development Hausarbeit
 
 Online auf [http://www2.inf.h-bonn-rhein-sieg.de/](http://www2.inf.h-bonn-rhein-sieg.de/~tschn22s/)
 
@@ -7,5 +7,5 @@ Online auf [http://www2.inf.h-bonn-rhein-sieg.de/](http://www2.inf.h-bonn-rhein-
 
 ## Installieren
 * Repository klonen oder forken
-* installieren mit ```npm install```
-* ausführen mit ```npm run serve``` oder ```npm run build```
+* Installieren mit ```npm install```
+* Bauen mit ```npm run build```
