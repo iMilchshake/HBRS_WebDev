@@ -13,7 +13,8 @@ let buttons = document.getElementsByClassName("tictactoe_button")
 for(let i = 0; i < 9; i ++) {
     const x = i % 3;
     const y = Math.floor(i / 3);
-    buttons[i].addEventListener("click", e => {
+
+    buttons[i].addEventListener("click", () => {
         humanMove(x, y);
     })
 }

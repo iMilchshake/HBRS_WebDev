@@ -3,6 +3,7 @@ import Home from "../views/site/home_wrapper/Home";
 import About from "../views/site/about_wrapper/about/About";
 import Welcome from "../views/welcome/Welcome";
 import About_wrapper from "../views/site/about_wrapper/About_wrapper";
+import Navigator_wrapper from "@/views/site/navigator_wrapper/Navigator_wrapper";
 import About2 from "../views/site/about_wrapper/about2/About2";
 import Site from "../views/site/Site";
 import NotFound from "../views/NotFound/NotFound";
@@ -10,6 +11,11 @@ import a1 from "../views/site/navigator_wrapper/u9/a1";
 import a2 from "../views/site/navigator_wrapper/u9/a2";
 
 const routes = [
+    {
+        path: '/',
+        name: 'Welcome',
+        component: Welcome
+    },
     {
         path: '/site',
         name: 'Site',
@@ -39,7 +45,7 @@ const routes = [
             {
                 path: '/site/navigator/',
                 name: 'Navigator',
-                component: () => import("../views/site/navigator_wrapper/Navigator_wrapper"),
+                component: Navigator_wrapper,
                 children: []
             }]
 
@@ -53,11 +59,6 @@ const routes = [
         path: '/solutions/u9/a2',
         name: 'u9/a2',
         component: a2
-    },
-    {
-        path: '/',
-        name: 'Welcome',
-        component: Welcome
     },
     {
         path: "/:catchAll(.*)",

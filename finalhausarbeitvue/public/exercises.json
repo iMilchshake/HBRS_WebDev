@@ -176,8 +176,8 @@
         "txt": "Responsiv mit Grid",
         "subtasks": [
           {
-            "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/landing.png",
             "q": "Implementieren Sie folgende Landing Page responsiv mit Grid Layout. Vermeiden Sie außerdem das Erscheinen von Scrollbars so weit wie möglich.",
+            "wireframe": "https://kaul.inf.h-brs.de/we/assets/img/landing.png",
             "path": "./solutions/u3/a3.html",
             "src": "./solutions/u3/a3.html"
           }

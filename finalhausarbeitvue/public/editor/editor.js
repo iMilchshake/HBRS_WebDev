@@ -13,7 +13,7 @@ let current_unteraufgabe;
 let json;
 
 // initialize
-let promise = initializeEditor();
+initializeEditor();
 
 // fetch json data from server and display editor
 async function initializeEditor() {
@@ -22,15 +22,15 @@ async function initializeEditor() {
     createAufgabenOptions();
 
     // add event handlers for UI
-    select_uebung.addEventListener("change", id => updateSelects('select_uebung'));
-    select_aufgabe.addEventListener("change", id => updateSelects('select_aufgabe'));
-    select_unteraufgabe.addEventListener("change", id => updateSelects('select_unteraufgabe'));
-    document.getElementById('button_adduebung').addEventListener("click", x => addNewEntity("uebung"));
-    document.getElementById('button_addaufgabe').addEventListener("click", x => addNewEntity("aufgabe"));
-    document.getElementById('button_addunteraufgabe').addEventListener("click", x => addNewEntity("unteraufgabe"));
-    document.getElementById('button_debug').addEventListener("click", x => debug());
-    document.getElementById('button_export').addEventListener("click", x => sendData());
-    document.getElementById('button_return').addEventListener("click", x => {
+    select_uebung.addEventListener("change", () => updateSelects('select_uebung'));
+    select_aufgabe.addEventListener("change", () => updateSelects('select_aufgabe'));
+    select_unteraufgabe.addEventListener("change", () => updateSelects('select_unteraufgabe'));
+    document.getElementById('button_adduebung').addEventListener("click", () => addNewEntity("uebung"));
+    document.getElementById('button_addaufgabe').addEventListener("click", () => addNewEntity("aufgabe"));
+    document.getElementById('button_addunteraufgabe').addEventListener("click", () => addNewEntity("unteraufgabe"));
+    document.getElementById('button_debug').addEventListener("click", () => debug());
+    document.getElementById('button_export').addEventListener("click", () => sendData());
+    document.getElementById('button_return').addEventListener("click", () => {
         window.location.href = "../#/site/navigator/";
     })
 }
@@ -51,9 +51,9 @@ function createAufgabenOptions() {
     removeAllOptions(select_unteraufgabe);
     removeAllOptions(select_aufgabe);
 
-    json.forEach(uebung => {
-        addOptionToSelect(uebung['exercise'], "select_uebung")
-    });
+    for(const uebung of json) {
+        addOptionToSelect(uebung['exercise'], "select_uebung");
+    }
 
     updateSelects('select_uebung');
 }
@@ -77,12 +77,13 @@ function getCurrentSelection(select) {
 }
 
 function addNewEntity(type) {
+    let t = "";
     switch (type) {
         case "uebung":
-            const u = prompt("Name der Übung?", "Übung X");
+            t = prompt("Name der Übung?", "Übung X");
 
-            if (u) {
-                json.push({exercise: u, heading: "", tasks: []})
+            if (t !== "") {
+                json.push({exercise: t, heading: "", tasks: []})
                 createAufgabenOptions();
                 select_uebung.selectedIndex = select_uebung.childElementCount - 1;
                 updateSelects('select_uebung');
@@ -90,10 +91,10 @@ function addNewEntity(type) {
             }
             break;
         case "aufgabe":
-            const a = prompt("Name der Aufgabe?", "Aufgabe x");
-            if (a) {
+            t = prompt("Name der Aufgabe?", "Aufgabe x");
+            if (t !== "") {
                 // create new aufgabe
-                uebung_data.tasks.push({task: a, txt: "", subtasks: []});
+                uebung_data.tasks.push({task: t, txt: "", subtasks: []});
                 updateSelects('select_uebung');
 
                 // switch to new aufgabe
@@ -111,6 +112,7 @@ function addNewEntity(type) {
                 select_unteraufgabe.selectedIndex = select_unteraufgabe.childElementCount - 1;
                 updateSelects('select_unteraufgabe');
             }
+            break;
     }
 }
 

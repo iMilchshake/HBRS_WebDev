@@ -2,17 +2,22 @@
   <div class="content">
     <h2> Startseite </h2>
     <hr>
-    <h3> Herzlich Willkommen! </h3>
-    <p> Diese Website ist im Rahmen der Lehrveranstaltung <a
+    <h3> Herzlich Willkommen!</h3>
+    <p> Diese Website ist im Rahmen der Lehrveranstaltung<a
         href="https://eva2.inf.h-brs.de/studium/curriculum/2017/matrix/bi/398/de/"> Einführung in Web Engineering </a>
-      von Prof. Dr. Kaul entstanden. In der Menüleiste kann man einen Navigator wählen, mit welchem man sich meine
-      Lösungen zu den Übungsaufgaben der Lehrveranstaltung anschauen kann.</p>
+      an der Hochschule Bonn-Rhein-Sieg entstanden. In der Menüleiste kann man folgende Unterseiten öffnen: </p>
+    <ul>
+      <li><b>Startseite</b> - Derzeitig ausgewählte Unterseite</li>
+      <li><b>Navigator</b> - Meine Lösungen für die Übungsaufgaben der Lehrveranstaltung</li>
+      <li><b>Editor</b> - Ein Passwortgeschützter Editor um die Lösungen des Navigators zu bearbeiten</li>
+      <li><b>TicTacToe</b> - Ein Spiel für zwischendurch</li>
+    </ul>
 
     <h3> Credits: </h3>
     <ul>
-      <li> Email-logo: <a href='https://www.freepik.com/vectors/cards'>Cards vector created by makyzz -
+      <li><b>Email-logo: </b> <a href='https://www.freepik.com/vectors/cards'>Cards vector created by makyzz -
         www.freepik.com</a></li>
-      <li> Font: <a
+      <li><b>Font:</b> <a
           href="https://fonts.google.com/specimen/Roboto+Condensed?preview.text_type=custom&sidebar.open=true&selection.family=Roboto+Condensed">
         Roboto Condensed by Christian Robertson</a></li>
     </ul>
